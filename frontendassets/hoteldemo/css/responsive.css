@@ -1,0 +1,768 @@
+/*******MEDIA QUERIES********/
+@media screen and (max-width:1170px) {
+
+    .wrapper {
+        width:940px;
+        margin:0 auto;
+        display:block;
+        margin-top: 20px;
+    }
+
+    .upper-header {
+       width:940px; 
+    }
+
+    .inner-subheader {
+    width: 940px;
+    margin: auto;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+        float: none;
+        margin: auto;
+    }
+
+    ul#navlist {
+        float: none;
+        width: 940px;
+        margin: auto;
+    }
+
+    ul#navlist li a {
+    font-size: 12px;
+    padding: 10px 8px;
+    }
+
+    .flexslider {
+    width: 940px;
+    margin:auto;
+    }
+
+
+
+    .book-form {
+    width: 940px; 
+    margin: auto;
+    }
+
+    .inner-form {
+    width: 940px; 
+    margin: auto;
+    }
+
+    .sf-menu .sub-menu { padding-top: 0px; }
+
+
+  
+    .inputs input[type="text"] {
+    float: left;
+    padding: 9px 9px 9px;
+    width: 150px; }
+
+    .inputs select {
+    float: left;
+    padding: 7px 9px 7px;
+    width: 150px; }
+
+    .inner-footer {
+     width: 940px;   
+    }
+
+    .lastdiv {
+    width: 940px;
+    margin: auto;
+    }
+
+  .touch input[type="text"] {
+    width: 198px;
+    }
+
+  .touch textarea {
+    padding: 6px 10px 6px;
+    width: 198px;
+    }
+
+    .side-form input[type="text"] {
+    width: 160px;
+    }
+
+    .side-form select {
+    padding: 7px 9px 7px;
+    width: 178px;
+    }
+
+    .side-form input[type="submit"] {
+    padding: 6px 10px;
+    text-align: center;
+    width: 100%;
+    }
+
+    .inner-banner {
+    width: 940px;
+    margin: auto;
+    }
+
+    .accomodation5-content .box-text {
+    float: left;
+    width: 560px;
+    }
+
+    .accomodation5-content .box-text {
+    float: left;
+    width: 100%;
+    }
+
+    .accomodation5-content .box-img {
+    float: left;
+    margin-right: 20px;
+    width: 100%;
+    }
+
+    .contact2 {
+    float: left;
+    width: 160px;
+    }
+
+    .msg-form {
+    float: left;
+    width: 510px;
+    margin-left: 20px;
+    }
+
+    .msg-form input[type="text"] {
+    width: 130px;
+    }
+
+    .msg-form textarea {
+    width: 478px;
+    }
+
+    .second-effect:hover .mask {
+    opacity: 1;
+    border:90px solid rgba(65,207,197,0.7);
+    }
+
+    .second-effect a.info {
+    top: -43px;
+    }
+
+    #home-boxed {
+    width: 960px;
+    }
+
+    .content-box img {
+    float: left;
+    margin-right: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    }
+
+    .content-text {
+    width: 100%;
+    float: left;
+    }
+
+    .firstrow-text {
+    float: left;
+    margin-right: 20px;
+    width: 405px;
+    margin-bottom: 20px;
+    }
+
+    .box-hover {
+    width: 216px;
+    float: left;
+    margin-left: 20px;
+    }
+
+    .our-team li {
+    width: 219px;
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    }
+
+    .our-team li img {
+        width: 100%;
+    }
+
+
+}
+/* for 980px or less */
+@media screen and (max-width:980px) {
+    .wrapper {
+        width:724px;
+        margin:0 auto;
+        display:block;
+        margin-top: 20px;
+    }
+
+    
+    .upper-header {
+    width: 724px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    }
+
+    .inner-subheader {
+    width: 724px;
+    margin: auto;
+    }
+
+    .logo {
+    margin: auto !important;
+    padding-top: 10px;
+    }
+
+    #nav {
+    float: none;
+    width: 624px;
+    margin: auto;
+    margin-bottom: 10px !important;
+    }
+
+     /* Main Menu */
+    #nav > ul { display: none; }
+    #nav select { display: block; padding: 3px; margin-top: 15px; outline: none; border: 1px solid #333; width: 100%; }
+
+    
+
+    .flexslider {
+    width: 724px;
+    margin:auto;
+    }
+
+    .flex-direction-nav .flex-next {
+      background-position:100% 0;
+      opacity:0.8;
+      right: 0px;
+      bottom: 0px
+
+    }
+    .flex-direction-nav .flex-prev {
+      opacity:0.8;
+      left: 0px;
+      bottom: 0px;
+    }
+
+
+    .book-form {
+    width: 724px;
+    margin: auto;
+    }
+
+
+    .inner-form {
+    width: 724px;
+    margin: auto;
+    position: static;
+    }
+
+    .inputs input[type="text"] {
+    float: left;
+    padding: 9px 9px 9px;
+    width: 100px; }
+
+    .inputs select {
+    float: left;
+    padding: 7px 9px 7px;
+    width: 100px; }
+
+    .lastdiv {
+    width: 724px;
+    margin: auto;
+    }
+    .slide {
+    width: 217px !important;
+    }
+
+    .inner-footer {
+     width: 724px;   
+    }
+
+    .touch input[type="text"] {
+    width: 143px;
+    }
+
+    .touch textarea {
+    width: 143px;
+    }
+
+    .flickr ul li img {
+        width: 100%;
+    }
+
+    .flickr ul li {
+        width: 60px;
+        margin-left: 22px;
+    }
+    .flickr ul {
+        margin-left: -20px;
+    }
+
+    .testimonials .bx-viewport {
+    height: 240px !important;
+    }
+
+    .side-form input[type="text"] {
+    width: 110px;
+    }
+
+    .side-form select {
+    padding: 7px 9px 7px;
+    width: 127px;
+    }
+
+    .side-form input[type="submit"] {
+    padding: 6px 5px;
+    text-align: center;
+    width: 100%;
+    }
+
+    .accomodation1-content .box {
+    width: 30%;
+    }
+
+    .accomodation1-content .box .details {
+    padding: 10px 58px 10px 48px;
+    }
+
+    .accomodation3-content .box .details {
+    padding: 10px 58px 10px 48px;
+    }
+
+    .inner-banner {
+    width: 724px;
+    margin: auto;
+    }
+
+    .contact2 {
+    float: left;
+    width: 100%;
+    }
+
+    .msg-form {
+    float: left;
+    width: 100%;
+    margin-left: 0px;
+    }
+
+    .msg-form input[type="text"] {
+    width: 140px;
+    }
+
+    .msg-form textarea {
+    width: 508px;
+    }
+
+    .second-effect:hover .mask {
+    opacity: 1;
+    border:60px solid rgba(65,207,197,0.7);
+    }
+
+    .second-effect a.info {
+    top: -33px;
+    }
+
+    #home-boxed {
+    width: 744px;
+    }
+
+    .content-two .content-box {
+    width: 30%;
+    }
+
+    .accomodation6-content .column4{
+     width: 30%;
+    }
+
+    .accomodation6-content .box .details {
+    background: url(../images/book-bg.png) 0 no-repeat;
+    padding: 10px 58px 10px 48px;
+    }
+
+    .firstrow-text {
+    float: left;
+    margin-right: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    }
+
+    .first-row img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .box-hover {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+    }
+
+    .our-team li {
+    width: 169px;
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    }
+
+
+}
+/* for 700px or less */
+@media screen and (max-width:700px) {
+
+    .wrapper {
+        width:440px;
+        margin:0 auto;
+        display:block;
+        margin-top: 20px;
+    }
+
+   .inner-subheader {
+    width: 440px;
+    margin: auto;
+    }
+
+    .subheader .socials {
+    float: left;
+    }
+
+    .upper-header {
+    width: 440px;
+    }
+
+    .upper-header .column4 {
+        width: 180px;
+        margin: auto !important;
+    }
+
+    .email a {
+    margin-top: 5px;
+    }
+
+    .phone p {
+    margin-top: 5px;
+    }
+
+ 
+
+    #nav {
+     width: 440px;
+    margin: auto;   
+    }
+
+    .sub-menu span {
+      display: inline;
+    }
+
+    .flexslider {
+    width: 440px;
+    margin:auto;
+    }
+
+
+    
+    .flex-direction-nav .flex-next {
+      background-position:100% 0;
+      opacity:0.8;
+      right: 0px;
+      bottom: 0px
+
+    }
+    .flex-direction-nav .flex-prev {
+      opacity:0.8;
+      left: 0px;
+      bottom: 0px;
+    }
+
+    .inner-form {
+    width: 440px;
+    margin: auto;
+    height: 265px;
+    position: static;
+    }
+
+    .book-form {
+    width: 440px;
+    margin: auto;
+    }
+
+    .inputs input[type="text"] {
+    float: left;
+    padding: 9px 9px 9px;
+    width: 390px;
+    }
+
+    .inputs select {
+    float: left;
+    padding: 7px 9px 7px;
+    width: 407px;
+    }
+
+    .book-form input[type="submit"] {
+    float: left;
+    color: #fff;
+    padding: 6px 142px; }
+
+    .accordion {
+        margin-bottom: 20px;
+    }
+
+    .testimonials .bx-controls-direction a {
+    position: absolute;
+    top: -40px 
+    }
+
+    .testimonials .bx-viewport {
+    height: 234px !important;
+    }
+
+    footer {
+    padding-top: 5px;
+    }
+
+    .inner-footer {
+     width: 440px;   
+    }
+
+    .lastdiv {
+    width: 440px;
+    margin: auto;
+    }
+
+    .inner-footer h4 {
+        margin-bottom: 20px;
+    }
+
+    .touch input[type="text"] {
+    width: 193px;
+    }
+
+    .touch textarea {
+    width: 413px;
+    }
+
+    .flickr ul li {
+    width: 52px;
+    margin-left: 22px;
+    }
+
+    .side-form input[type="text"] {
+    width: 382px;
+    }
+
+    .side-form select {
+    padding: 7px 9px 7px;
+    width: 100%;
+    }
+
+    .side-form input[type="submit"] {
+    padding: 6px 5px;
+    text-align: center;
+    width: 100%;
+    }
+
+    .accomodation1-content .box {
+    width: 100%;
+    }
+
+    .box .details {
+    padding: 20px 58px 20px 48px;
+    }
+
+    .inner-banner {
+    width: 440px;
+    margin: auto;
+    }
+
+    #map {
+    height: 370px;
+    }
+
+    .msg-form input[type="text"] {
+    width: 107px;
+    }
+
+    .msg-form textarea {
+    width: 409px;
+    }
+
+    .second-effect:hover .mask {
+    opacity: 1;
+    border:150px solid rgba(65,207,197,0.7);
+    }
+
+    .second-effect a.info {
+    top: -33px;
+    }
+
+    #home-boxed {
+    width: 460px;
+    }
+
+    .content-two .content-box {
+    width: 100%;
+    }
+
+    .content-two .post-author {
+    margin-right: 80px;
+    }
+
+    .content-three .post-author {
+    margin-right: 80px;
+    }
+
+
+    .accomodation6-content .column4{
+     width: 100%;
+    }
+
+    .accomodation6-content .box .details {
+    background: url(../images/book-bg.png) 0 no-repeat;
+    padding: 20px 58px 20px 48px;
+    }
+
+    .our-team ul {
+        margin-left: 0;
+    }
+
+    .our-team li {
+    width: 100%;
+    float: left;
+    margin-left: 0px;
+    margin-bottom: 30px;
+    }
+
+}
+/* for 480px or less */
+@media screen and (max-width:480px) {
+
+
+    #nav {
+    float: none;
+    width: 290px;
+    margin-left: -15px;
+    margin: auto;
+    }
+    
+    .wrapper {
+        width:300px;
+        margin:0 auto;
+        display:block;
+        margin-top: 20px;
+    }
+
+    .upper-header {
+    width: 300px;
+    }
+
+    .book-form {
+    width: 300px;
+    margin: auto;
+    }
+
+    .inner-form {
+    width: 300px;
+    margin: auto;
+    }
+    
+
+   .flex-direction-nav a {
+    display: none;
+    }
+
+    .flexslider {
+        width: 300px;
+    }
+
+    .inputs input[type="text"] {
+    float: left;
+    padding: 9px 9px 9px;
+    width: 250px;
+    }
+
+    .inputs select {
+    float: left;
+    padding: 7px 9px 7px;
+    width: 267px;
+    }
+
+    .book-form input[type="submit"] {
+    float: left;
+    color: #fff;
+    padding: 6px 72px;
+    }
+
+    
+    .inner-footer {
+     width: 300px;   
+    }
+    .lastdiv {
+    width: 300px;
+    margin: auto;
+    }
+
+    .touch input[type="text"] {
+    width: 275px;
+    }
+
+    .touch textarea {
+    width: 275px;
+    }
+
+    .flickr ul li {
+    width: 80px;
+    margin-left: 22px;
+    margin-bottom: 20px;
+    }
+
+    .side-form input[type="text"] {
+    width: 242px;
+    }
+
+    .inner-banner {
+    width: 300px;
+    margin: auto;
+    }
+
+    .site_map {
+    float: left;
+    padding-bottom: 20px;
+    padding-top: 0;
+    }
+
+    #map {
+    height: 270px;
+    }
+
+    .msg-form input[type="text"] {
+    width: 269px;
+    }
+
+    .msg-form textarea {
+    width: 269px;
+    }
+
+    
+    .second-effect:hover .mask {
+    opacity: 1;
+    border:100px solid rgba(65,207,197,0.7);
+    }
+
+    .second-effect a.info {
+    top: -33px;
+    }
+
+    #home-boxed {
+    width: 320px;
+    }
+
+    .content-two .post-author {
+    margin-right: 40px;
+    }
+    .content-three .post-author {
+    margin-right: 40px;
+    }
+
+}

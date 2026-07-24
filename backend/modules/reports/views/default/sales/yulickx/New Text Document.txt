@@ -1,0 +1,14 @@
+case 13:
+    $sj="sales/yulick/rep_m_salesinvoicebenjabidr";
+    break;
+case 14:
+    $sj="sales/yulick/rep_m_salesinvoicejerviedr";
+    break;
+
+
+    <input type="radio" class="repsons sjreportlabel"  name="sjreportlabel" value="12"> Agathon Delivery Receipt<br/>
+                    <input type="radio" class="repsons sjreportlabel"  name="sjreportlabel" value="13"> Benjabi Ventures Corp.</br>
+                    <input type="radio" class="repsons sjreportlabel"  name="sjreportlabel" value="14"> Jervie Rolle`s Frozen Goods DR</br>
+
+
+

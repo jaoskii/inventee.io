@@ -1,0 +1,240 @@
+<?php
+date_default_timezone_set('Asia/Manila');
+$this->title = 'Sales Order Report';
+?>
+
+<div id="print_btn" class="btn_a">
+    <button class="btn btn-default form-control" onClick="window.print();"><i class="fa fa-print"></i></button>
+</div>
+
+<?php
+$count=35;
+$page=35;
+
+Yii::$app->reporter->beginreport();
+
+Yii::$app->reporter->begintable('800');
+$header=Yii::$app->reporter->letterhead();
+Yii::$app->reporter->endtable();
+echo '<br/><br/>';
+
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        //($txt='',$w=null,$h=null, $bg=false,$b=false,$b_='', $al='', $f='', $fs='',$fw='',$fc='',$pad='',$m='')
+        Yii::$app->reporter->col('SALES ORDER','600',null,false,'1px solid ','','L','Helvetica','18','B','','');
+        Yii::$app->reporter->col('DOCUMENT # :','100',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col((isset($data[0]['docno'])? $data[0]['docno']:''),'100',null,false,'1px solid ','B','L','Helvetica','13','','','').'<br />';
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('CUSTOMER : ','100',null,false,'1px solid ','','L','Helvetica','13','B','30px','4px');
+        Yii::$app->reporter->col((isset($data[0]['clientname'])? $data[0]['clientname']:''),'510',null,false,'1px solid ','B','L','Helvetica','13','','30px','4px');
+        Yii::$app->reporter->col('DATE : ','80',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col((isset($data[0]['dateid'])? $data[0]['dateid']:''),'120',null,false,'1px solid ','B','R','Helvetica','13','','','');
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('ADDRESS : ','100',null,false,'1px solid ','','L','Helvetica','13','B','30px','4px');
+        Yii::$app->reporter->col((isset($data[0]['address'])? $data[0]['address']:''),'510',null,false,'1px solid ','B','L','Helvetica','13','','30px','4px');
+        Yii::$app->reporter->col('TERMS : ','80',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col((isset($data[0]['terms'])? $data[0]['terms']:''),'120',null,false,'1px solid ','B','R','Helvetica','13','','','');
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow(null,null,false,'1px solid ','','R','Helvetica','10','','','4px');
+        Yii::$app->reporter->pagenumber('Page');
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+
+Yii::$app->reporter->printline();
+//($w=null,$h=null, $bg=false,  $b=false, $al='',  $f='', $fs='',$fw='',$fc='',$pad='',$m='')
+Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+        //($txt='',$w=null,$h=null, $bg=false,$b=false,$b_='', $al='', $f='', $fs='',$fw='',$fc='',$pad='',$m='')
+        Yii::$app->reporter->col('QTY','50px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('UNIT','50px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('D E S C R I P T I O N','500px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('G PRICE','100px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('(+/-) %','50px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('N PRICE','100px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('TOTAL','125px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+
+        
+
+   $totalext=0;
+
+for($i=0;$i<count($data);$i++){
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->addline();
+        Yii::$app->reporter->col(number_format($data[$i]['qty'],Yii::$app->systemsettings->setDecimaldisplay('quantity')),'50px',null,false,'1px solid ','','C','Helvetica','14','','','2px');
+        Yii::$app->reporter->col($data[$i]['uom'],'50px',null,false,'1px solid ','','C','Helvetica','14','','','2px');
+        Yii::$app->reporter->col($data[$i]['itemname'],'500px',null,false,'1px solid ','','L','Helvetica','14','','','2px');
+        Yii::$app->reporter->col(number_format($data[$i]['gross']/(1-($data[$i]['disc']/100)),Yii::$app->systemsettings->setDecimaldisplay('currency')),'100px',null,false,'1px solid ','','R','Helvetica','14','','','2px');
+        Yii::$app->reporter->col($data[$i]['disc'],'50px',null,false,'1px solid ','','C','Helvetica','14','','','');
+        Yii::$app->reporter->col(number_format($data[$i]['gross'],Yii::$app->systemsettings->setDecimaldisplay('currency')),'100px',null,false,'1px solid ','','R','Helvetica','14','','','2px');
+        Yii::$app->reporter->col(number_format($data[$i]['ext'],Yii::$app->systemsettings->setDecimaldisplay('currency')),'125px',null,false,'1px solid ','','R','Helvetica','14','','','2px');
+        $totalext=$totalext+$data[$i]['ext'];  
+        
+    if(Yii::$app->reporter->linecounter==$page){
+            Yii::$app->reporter->endtable();
+            Yii::$app->reporter->page_break();
+
+Yii::$app->reporter->begintable('800');
+$header=Yii::$app->reporter->letterhead();
+Yii::$app->reporter->endtable();
+echo '<br/><br/>';
+
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        //($txt='',$w=null,$h=null, $bg=false,$b=false,$b_='', $al='', $f='', $fs='',$fw='',$fc='',$pad='',$m='')
+        Yii::$app->reporter->col('SALES ORDER','600',null,false,'1px solid ','','L','Helvetica','18','B','','');
+        Yii::$app->reporter->col('DOCUMENT # :','100',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col((isset($data[0]['docno'])? $data[0]['docno']:''),'100',null,false,'1px solid ','B','L','Helvetica','13','','','').'<br />';
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('CUSTOMER : ','80',null,false,'1px solid ','','L','Helvetica','13','B','30px','4px');
+        Yii::$app->reporter->col((isset($data[0]['clientname'])? $data[0]['clientname']:''),'520',null,false,'1px solid ','B','L','Helvetica','13','','30px','4px');
+        Yii::$app->reporter->col('DATE : ','40',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col((isset($data[0]['dateid'])? $data[0]['dateid']:''),'160',null,false,'1px solid ','B','R','Helvetica','13','','','');
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('ADDRESS : ','80',null,false,'1px solid ','','L','Helvetica','13','B','30px','4px');
+        Yii::$app->reporter->col((isset($data[0]['address'])? $data[0]['address']:''),'500',null,false,'1px solid ','B','L','Helvetica','13','','30px','4px');
+        Yii::$app->reporter->col('TERMS : ','50',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col((isset($data[0]['terms'])? $data[0]['terms']:''),'150',null,false,'1px solid ','B','R','Helvetica','13','','','');
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+
+Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow(null,null,false,'1px solid ','','R','Helvetica','10','','','4px');
+        Yii::$app->reporter->pagenumber('Page');
+        Yii::$app->reporter->endrow();
+Yii::$app->reporter->endtable();
+
+Yii::$app->reporter->printline();
+
+Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+        //($txt='',$w=null,$h=null, $bg=false,$b=false,$b_='', $al='', $f='', $fs='',$fw='',$fc='',$pad='',$m='')
+        Yii::$app->reporter->col('QTY','50px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('UNIT','50px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('D E S C R P T I O N','500px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('G PRICE','100px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('(+/-) %','50px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('N PRICE','100px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->col('TOTAL','125px',null,false,'1px solid ','B','C','Helvetica','13','B','30px','8px');
+        Yii::$app->reporter->endrow();
+        Yii::$app->reporter->printline();
+        $page=$page + $count;
+    }
+}   
+
+
+
+
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('','50px',null,false,'1px dotted ','T','C','Helvetica','13','B','','');
+        Yii::$app->reporter->col('','50px',null,false,'1px dotted ','T','C','Helvetica','13','B','','');
+        Yii::$app->reporter->col('','500px',null,false,'1px dotted ','T','C','Helvetica','13','B','','');
+        Yii::$app->reporter->col('','100px',null,false,'1px dotted ','T','C','Helvetica','13','B','','');
+        Yii::$app->reporter->col('','50px',null,false,'1px dotted ','T','C','Helvetica','13','B','','');
+        Yii::$app->reporter->col('','100px',null,false,'1px dotted ','T','R','Helvetica','13','B','','');
+        Yii::$app->reporter->col(number_format($totalext,Yii::$app->systemsettings->setDecimaldisplay('currency')),'125px',null,false,'1px dotted ','T','R','Verdana','16','','','');
+        Yii::$app->reporter->endrow();
+;
+    Yii::$app->reporter->endtable();
+    Yii::$app->reporter->printline();
+
+    $qry = "select sum(tvat) as tvat,sum(vat12) as vat12,sum(vatex) as vatex from (
+    select round((stock.ext / 1.12),".Yii::$app->systemsettings->setDecimaldisplay('currency').") as tvat,
+    round(((stock.ext / 1.12) * .12),".Yii::$app->systemsettings->setDecimaldisplay('currency').")  as vat12,
+    0 as vatex from sohead as head
+    left join sostock as stock on stock.trno = head.trno
+    left join item on item.barcode = stock.barcode
+    where head.trno = ".$data[0]['trno']." and item.isvat = 1
+    UNION ALL
+    select round((stock.ext / 1.12),".Yii::$app->systemsettings->setDecimaldisplay('currency').") as tvat,
+    round(((stock.ext / 1.12) * .12),".Yii::$app->systemsettings->setDecimaldisplay('currency').") as vat12,0 as vatex from hsohead as head
+    left join hsostock as stock on stock.trno = head.trno
+    left join item on item.barcode = stock.barcode
+    where head.trno = ".$data[0]['trno']." and item.isvat = 1
+    UNION ALL
+    select 0 as tvat,0 as vat12,round(stock.ext,".Yii::$app->systemsettings->setDecimaldisplay('currency').") as vatex from sohead as head
+    left join sostock as stock on stock.trno = head.trno
+    left join item on item.barcode = stock.barcode
+    where head.trno = ".$data[0]['trno']." and item.isvat = 0
+    UNION ALL
+    select 0 as tvat,0 as vat12,round(stock.ext,".Yii::$app->systemsettings->setDecimaldisplay('currency').") as vatex from hsohead as head
+    left join hsostock as stock on stock.trno = head.trno
+    left join item on item.barcode = stock.barcode
+    where head.trno = ".$data[0]['trno']." and item.isvat = 0) as tbl";
+
+    $vatdata = Yii::$app->sbccommon->opentable($qry);
+
+    Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+        Yii::$app->reporter->addline();
+        
+        Yii::$app->reporter->col('VATABLE: ' . number_format($vatdata[0]['tvat'],Yii::$app->systemsettings->setDecimaldisplay('currency')),'50px',null,false,'1px solid ','','l','Helvetica','14','b','','2px');
+        Yii::$app->reporter->col('VAT EXEMPT: '. number_format($vatdata[0]['vatex'],Yii::$app->systemsettings->setDecimaldisplay('currency')),'500px',null,false,'1px solid ','','L','Helvetica','14','b','','2px');
+        Yii::$app->reporter->col('VAT 12%:'. number_format($vatdata[0]['vat12'],Yii::$app->systemsettings->setDecimaldisplay('currency')),'125px',null,false,'1px solid ','','L','Helvetica','14','b','','2px');
+        Yii::$app->reporter->col('TOTAL: '. number_format($totalext,Yii::$app->systemsettings->setDecimaldisplay('currency')),'50px',null,false,'1px solid ','','L','Helvetica','14','b','','');
+        
+        Yii::$app->reporter->endrow();
+    Yii::$app->reporter->endtable();
+
+
+    
+    Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('NOTE : ','50',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col($data[0]['rem'],'750',null,false,'1px solid ','','L','Helvetica','13','','','');
+        Yii::$app->reporter->col('','1',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        
+        Yii::$app->reporter->endrow();
+    Yii::$app->reporter->endtable();
+    echo '<br/><br/>';
+    // Yii::$app->reporter->begintable('800');
+    //     Yii::$app->reporter->startrow();
+    //     Yii::$app->reporter->col('Prepared By : ','266',null,false,'1px solid ','','L','Helvetica','13','','','');
+    //     Yii::$app->reporter->col('Approved By :','266',null,false,'1px solid ','','C','Helvetica','13','','','');
+    //     Yii::$app->reporter->col('Received By :','266',null,false,'1px solid ','','R','Helvetica','13','','','');
+    //     Yii::$app->reporter->endrow();
+    // Yii::$app->reporter->endtable();
+    
+    // echo '<br/>';
+    // Yii::$app->reporter->begintable('800');
+    //     Yii::$app->reporter->startrow();
+    //     Yii::$app->reporter->col($prepared,'266',null,false,'1px solid ','','L','Helvetica','13','B','','');
+    //     Yii::$app->reporter->col($approved,'266',null,false,'1px solid ','','C','Helvetica','13','B','','');
+    //     Yii::$app->reporter->col($received,'266',null,false,'1px solid ','','R','Helvetica','13','B','','');
+    //     Yii::$app->reporter->endrow();
+    // Yii::$app->reporter->endtable();
+    
+    Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('Prepared By : ','266',null,false,'1px solid ','','L','Helvetica','13','','','');
+        // Yii::$app->reporter->col($prepared,'266',null,false,'1px solid ','','L','Helvetica','13','B','','');
+        Yii::$app->reporter->col('Approved By :','266',null,false,'1px solid ','','C','Helvetica','13','','','');
+        // Yii::$app->reporter->col($approved,'266',null,false,'1px solid ','','C','Helvetica','13','B','','');
+        Yii::$app->reporter->col('Received By :','266',null,false,'1px solid ','','R','Helvetica','13','','','');
+        // Yii::$app->reporter->col($received,'266',null,false,'1px solid ','','R','Helvetica','13','B','','');
+        Yii::$app->reporter->endrow();
+    Yii::$app->reporter->endtable();
+    
+    
+
+Yii::$app->reporter->endtable();
+
+
+Yii::$app->reporter->endreport();
+
+
+?>

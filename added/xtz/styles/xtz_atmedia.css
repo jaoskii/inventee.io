@@ -1,0 +1,51 @@
+@media only screen and (max-width: 470px)  {
+.xtz-alphatext {
+     font-size:7px!important;
+}
+
+.no-margin.font-alpha > a {
+     font-size:9px!important;
+}
+
+.font-beta {
+     font-size:9px!important;
+}
+
+.desk-top{
+    display:none!important;
+}
+
+.mobile-top{
+    display:block!important;
+    height:740px;
+}
+
+.mobile-bg{
+	height:740px;	
+}
+
+.mobile-pic{
+	margin-top:180px;
+}
+
+
+.mobile-logo{
+	margin-left:5%;
+	margin-top:5%;
+	width: 120px;
+	height: 50px;
+}
+
+}
+
+
+@media only screen and (min-width: 471px)  {
+	.desk-top{
+    display:block!important;
+	}
+
+	.mobile-top{
+	    display:none;!important;
+	}
+
+}

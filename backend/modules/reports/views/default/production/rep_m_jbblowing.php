@@ -1,0 +1,428 @@
+<?php
+//WTODO: [KIM][2019.09.20][JB blowing job order layout]
+date_default_timezone_set('Asia/Manila');
+$this->title = 'Blowing Job Order';
+//WTODO: [KIM][2019.11.13][updated blowing layout]
+?>
+
+<div id="print_btn" class="btn_a">
+    <button class="btn btn-default form-control" onClick="window.print();"><i class="fa fa-print"></i></button>
+</div>
+
+<?php
+$count=35;
+$page=35;
+
+$totalmat = 0;
+$total = 0;
+$k = "";
+
+for($i=0;$i<count($data);$i++){
+    if(substr($data[$i]['matuom'], 0,1) == 'K'){
+      $total = $data[$i]['qty'];
+    }else{
+      $total = 0;
+    }
+
+    $totalmat = $totalmat + $total;
+}//end for each
+
+
+
+Yii::$app->reporter->beginreport();
+
+  Yii::$app->reporter->begintable('800');
+    // $header=Yii::$app->reporter->letterhead();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col(strtoupper(Yii::$app->session['loggeduser']['username']).' '.date('m/d/Y H:i:s',time()). '&nbsp;'.Yii::$app->session['loggeduser']['center'].'&nbsp;'.Yii::$app->session['ownerconfig']['companyname'],'400',null,false,'1px solid ','','L','Century Gothic','11','','','');
+    Yii::$app->reporter->endrow();
+    
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col(Yii::$app->session['loggeduser']['centername'],null,null,false,'1px solid ','','C','Century Gothic','12','','','').'<br />';
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('BLOWING JOB ORDER',null,null,false,'1px solid ','','C','Century Gothic','12','','','').'<br />';
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  echo '<br/>';
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Date &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['dateid'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('JO No. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['docno'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Customer &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['clientname'],'500',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col($data[0]['barcode'].'&nbsp&nbsp&nbsp&nbsp&nbsp'.$data[0]['itemname'],'500',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Plastic Size &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_jowidth'].' '.$data[0]['fg_jowidthuom'].'&nbsp&nbsp','250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Thick &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_thickness'].' ' . $data[0]['fg_thicknessuom'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Quantity &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.number_format($data[0]['iss'],Yii::$app->systemsettings->setDecimaldisplay('quantity')). ' ' . $data[0]['uom'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Job &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_prodtype'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Plastic Color &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_plasticcolor'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Plastic Kind &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_combi'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Length &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_jolength'].'&nbsp&nbsp'.$data[0]['fg_jolengthuom'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Treatment &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_treatment'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('G/Pc &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_gramppiece1'].' - '.$data[0]['fg_gramppiece2'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();  
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Transformation &nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_transform'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+
+    $qry = "select instruct from jb_processtab where trno = " . $data[0]['trno'] . " limit 1";
+    $instruct = Yii::$app->sbccommon->datareader($qry);
+
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Instructions &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp' . $instruct,'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('','300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Blown Film &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_bfilmdet'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Width &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_bfilmwidth'].'&nbsp&nbsp'.$data[0]['fg_bfilmwidthuom'],'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+       Yii::$app->reporter->col('Thickness &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: &nbsp&nbsp'.$data[0]['fg_thickness2'].'&nbsp&nbsp'.$data[0]['fg_thickness2uom'],'300',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Operator','250',null,false,'1px solid ','','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','5',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Reject','150',null,false,'1px solid ','','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','100',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','100',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','175',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','250',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','150',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('kg.','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','130',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','250',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','150',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('kg.','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','130',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','250',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','150',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('kg.','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('&nbsp&nbsp&nbsp&nbspTotal Material &nbsp&nbsp&nbsp: ','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col(number_format($totalmat,Yii::$app->systemsettings->setDecimaldisplay('quantity')),'130',null,false,'1px solid ','','R','Century Gothic','12','','','');
+      Yii::$app->reporter->col('kg.','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Total : ','250',null,false,'1px solid ','','R','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','150',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('kg.','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('&nbsp&nbsp&nbsp&nbspBlown Film Yield : ','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','130',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('kg.','10',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','120',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  echo '</br>';
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('DATE & TIME STARTED','350',null,false,'1px solid ','','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('FINISHED','350',null,false,'1px solid ','','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','200',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('(','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','146',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col(')','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','200',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('(','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','146',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col(')','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','200',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('(','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','146',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col(')','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','200',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('(','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','146',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col(')','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','200',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('(','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','146',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col(')','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','200',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('(','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','146',null,false,'1px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col(')','2',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  echo '</br>';
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','14','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','','L','Century Gothic','14','','','');
+      Yii::$app->reporter->col('1','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('2','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('3','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('4','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('5','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('6','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('7','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('8','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('9','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('10','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','14','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('QC','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Gross','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Spool','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Net','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','14','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','','L','Century Gothic','14','','','');
+      Yii::$app->reporter->col('11','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('12','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('13','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('14','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('15','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('16','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('17','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('18','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('19','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('20','72',null,false,'1px solid ','','C','Century Gothic','14','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','14','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('QC','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Gross','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Spool','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Net','72',null,false,'1px solid ','','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','72',null,false,'1px solid ','TLRB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','4',null,false,'1px solid ','','L','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+  echo '</br></br>';
+
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('Code','150',null,false,'2px solid ','TB','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Material','300',null,false,'2px solid ','TB','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Unit','50',null,false,'2px solid ','TB','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('Qty','150',null,false,'2px solid ','TB','R','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','150',null,false,'2px solid ','','R','Century Gothic','12','','','');
+       
+      for($i=0;$i<count($data);$i++){
+        Yii::$app->reporter->startrow();
+          Yii::$app->reporter->addline();
+          Yii::$app->reporter->col($data[$i]['matbarcode'],'150',null,false,'1px solid ','','L','Century Gothic','10','','','');
+          Yii::$app->reporter->col($data[$i]['matitemname'],'300',null,false,'1px solid ','','L','Century Gothic','10','','','');
+          Yii::$app->reporter->col($data[$i]['matuom'],'50',null,false,'1px solid ','','C','Century Gothic','10','','','');
+          Yii::$app->reporter->col(number_format($data[$i]['qty'],Yii::$app->systemsettings->setDecimaldisplay('quantity')),'150',null,false,'1px solid ','','R','Century Gothic','10','','','');
+          Yii::$app->reporter->col('','150',null,false,'1px dotted ','','R','Century Gothic','12','B','30px','8px');
+        Yii::$app->reporter->endrow();
+
+    if(Yii::$app->reporter->linecounter==$page){
+    Yii::$app->reporter->endtable();
+    Yii::$app->reporter->begintable('800');
+      Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('Code','150',null,false,'2px solid ','TB','L','Century Gothic','12','','','');
+        Yii::$app->reporter->col('Material','300',null,false,'2px solid ','TB','L','Century Gothic','12','','','');
+        Yii::$app->reporter->col('Unit','50',null,false,'2px solid ','TB','L','Century Gothic','12','','','');
+        Yii::$app->reporter->col('Qty','150',null,false,'2px solid','TB','R','Century Gothic','12','','','');
+        Yii::$app->reporter->col('','150',null,false,'1px dotted ','','R','Century Gothic','12','','','');
+      Yii::$app->reporter->endrow();
+      Yii::$app->reporter->printline();
+    } 
+  }
+
+  Yii::$app->reporter->begintable('800');
+    Yii::$app->reporter->startrow();
+      Yii::$app->reporter->col('','150',null,false,'2px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','300',null,false,'2px solid ','B','L','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','50',null,false,'2px solid ','B','C','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','150',null,false,'2px solid ','B','R','Century Gothic','12','','','');
+      Yii::$app->reporter->col('','150',null,false,'2px solid ','','R','Century Gothic','12','','','');
+    Yii::$app->reporter->endrow();
+  Yii::$app->reporter->endtable();
+
+  echo '<br/>';
+    Yii::$app->reporter->begintable('800');
+        Yii::$app->reporter->startrow();
+        Yii::$app->reporter->col('Prepared by : '.$prepared,'250',null,false,'1px solid ','','L','Century Gothic','12','','','');
+        Yii::$app->reporter->col('','20',null,false,'1px solid ','','C','Century Gothic','12','','','');
+        Yii::$app->reporter->col('Approved by : ','90',null,false,'1px solid ','','L','Century Gothic','12','','','');
+        Yii::$app->reporter->col($approved,'160',null,false,'1px solid ','B','C','Century Gothic','12','','','');
+        Yii::$app->reporter->col('','20',null,false,'1px solid ','','L','Century Gothic','12','','','');
+        Yii::$app->reporter->col('Operator : ','70',null,false,'1px solid ','','L','Century Gothic','12','','','');
+        Yii::$app->reporter->col($operator,'190',null,false,'1px solid ','B','C','Century Gothic','12','','','');
+        Yii::$app->reporter->endrow();
+    Yii::$app->reporter->endtable();
+    
+
+Yii::$app->reporter->endreport();
+
+
+?>

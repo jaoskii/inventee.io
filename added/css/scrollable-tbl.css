@@ -1,0 +1,50 @@
+table.tableSection {
+        display: table;
+        width: 100%;
+    }
+table.tableSection thead, table.tableSection tbody {
+        float: left;
+        width: 100%;
+    }
+table.tableSection tbody {
+        overflow-y: auto;
+        height: 270px;
+    }
+
+table.tableSection tr {
+        width: 100%;
+        display: table;
+       /* text-align: left;*/
+    }
+table.tableSection th, table.tableSection td {
+/*        width: 25%;*/
+    /*text-align: center;*/
+    }
+    
+table.tableSection  td  {
+        padding: 5px;
+        font-size:12px;
+        font-weight: normal;
+        line-height: 18px;
+        cursor: pointer;
+        word-break: break-all;
+       /* text-align: center;*/
+    }
+    
+    
+table.tableSection  th  {
+    word-break: break-all;
+    }
+
+.btnstockopt{
+	text-align: center;
+}
+
+
+  .x {
+
+/*    border: solid 1px red;*/
+    height: 542px;
+/*     height:160vh;
+*/     scroll-behavior: auto;
+  }

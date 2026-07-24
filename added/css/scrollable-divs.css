@@ -1,0 +1,74 @@
+/*SCROLLABLE DIV FOR COA */
+.scroll-bankrecon {
+overflow-y:auto;
+height: 400px;
+}
+
+
+.coadiv{
+overflow-y:scroll;
+height: 491px;
+}
+
+.scroll-divs {
+overflow-y:auto;
+height: 713px;
+}
+
+.scroll-dodlist {
+overflow-y:scroll;
+height: 555px;
+}
+
+.scroll-doditems {
+overflow-y:scroll;
+height: 315px;
+}
+
+.scroll-brandinfo {
+overflow-y:scroll;
+height: 803px;
+}
+
+.scroll-pendingevents {
+overflow-y:scroll;
+height: 250px;
+}
+
+.scroll-notifications {
+overflow-y:scroll;
+height: 200px;
+}
+
+.scroll-mini {
+overflow-y:auto;
+height: 245px;
+}
+
+
+.scroll-projects {
+overflow-y:scroll;
+height: 365px;
+}
+
+
+.scroll-large {
+overflow-y:scroll;
+height: 400px;
+}
+
+.scroll-unfin-scheds {
+overflow-y:scroll;
+height: 210px;
+}
+
+.scroll-scheduserlist {
+overflow-y:scroll;
+height: 535px;
+}
+
+
+.scroll-lanes {
+overflow-y:scroll;
+height: 770px;
+}

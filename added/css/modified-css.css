@@ -1,0 +1,372 @@
+.viewmlcpstockrem{
+  margin-top:-5px;
+}
+
+#jodocuments_gridtbl{
+  height: 670px !important;
+}
+
+.preloader{
+  width:50px;
+  height:50px;
+}
+
+.info-box-text{
+  font-weight: bold;
+}
+
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
+  margin-bottom: 0;
+}
+
+.tt-dropdown-menu {
+  min-width: 160px;
+  margin-top: 2px;
+  padding: 5px 0;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+
+}
+.tt-suggestion {
+  display: block;
+  padding: 3px 20px;
+}
+
+/*.tt-suggestion.tt-is-under-cursor {
+  color: #fff;
+  background-color: #428bca;
+}
+.tt-suggestion.tt-is-under-cursor a {
+  color: #fff;
+}*/
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.tt-dataset{
+  background: #c6c6c6;
+  width: 451%;
+}
+
+.tt-cursor{
+  background-color: #FFFFFF !important;
+  border: solid 1px black;
+  width: 98%;
+}
+
+.galleryupload{
+  width:60%;
+}
+
+.tabtxt{
+  display:block;
+  margin-top:12px;
+  margin-right:20px;
+  font-size:12px;
+  font-weight: bold;
+}
+
+.insuffrow{
+  background-color: #999999;
+}
+
+.summary{
+  display:none;
+}
+
+.highlighttitle{
+  color:red;
+}
+
+.sidemenushow{
+  display: block;
+}
+
+.sidemenuhidden{
+  display: none;
+}
+
+.btblcenter{
+ text-align:center;
+}
+
+.btblright{
+ text-align:right;
+}
+
+.btblleft{
+ text-align:left;
+}
+
+
+
+
+
+.fc-more-popover{
+  height: 200px;
+  overflow: scroll;
+}
+
+.voidrow{
+  color: red;
+}
+
+.cancelledrow{
+  color: rgb(221, 75, 57);
+}
+
+.finishedrow{
+  color: #00a65a;
+}
+
+.ongoingrow{
+  color: rgb(243, 156, 18);
+}
+
+.unplottedrow{
+  color: rgb(68, 68, 68);
+}
+
+
+/*CLICKABLE CURSOR FOR LINK WITHOUT HREF*/
+ .clickable {
+   cursor: pointer !important;
+ }
+
+ .nav-tabs > li.active > a {
+  cursor: pointer !important;
+ }
+
+.text-red,.text-red:hover,.text-red:active,.text-red:visited {
+  color: rgb(221, 75, 57);
+}
+
+.user-info{
+  text-align:left;
+}
+
+.coa-spangreen{
+color:green;
+}
+
+.coa-spanred{
+color:red;
+}
+
+.coa-spanblue{
+color:blue;
+}
+
+.settings-btn{
+	margin-bottom: 3px;
+	width: 100%;
+}
+
+
+
+/* ##################################################### JAOSKI UPDATE*/
+
+.mod-rptmodal {
+  width: 100%;
+  overflow: scroll;
+  height: 560px;
+/*  margin-bottom: -20px;*/
+}
+
+/*FOR TABLE OVERFLOW X AND Y*/
+.mod-tble {
+  width: 100%;
+  overflow: scroll;
+  height: 360px;
+/*  margin-bottom: -20px;*/
+}
+
+.boxholder{
+  height: 405px;
+}
+
+.col-max {
+  width:350px;  
+}
+
+.col-xl {
+  width:450px;
+}
+
+.col-xxl {
+  width: 550px;
+}
+
+.col-xxxl {
+  width: 650px; /* for very long strings */
+}
+
+.col-med {
+  width:150px;
+}
+
+.col-min {
+  width:80px;
+}
+
+.col-checkbox {
+  width:30px;
+}
+
+.tbl-fix{
+  table-layout: fixed;
+}
+
+
+.nobody{
+  display:none;
+}
+
+
+/*USE THIS TO SET EACH OF THE FOLLOWING MODOULES*/
+
+.col-codes{ /*FOR CODES*/
+  width:180px;
+}
+
+.col-description{ /*FOR DESCRIPTIONS AND NAMES*/
+	width:250px;
+}
+
+.col-currency{ /*FOR CURRENCY AMOUNTS*/
+  width:100px;
+}
+
+.col-quantity{ /*FOR NUMBERS*/
+  width:80px;
+}
+
+/*USE THIS TO SET EACH OF THE FOLLOWING MODOULES*/
+
+
+/*SETS HEIGHT OF MINI COMBOBOXES*/
+.stockwhtxt, .minitxtcombo{
+  padding:0px;
+  height:21px;
+  width:85px;
+}
+/*SETS HEIGHT OF MINI COMBOBOXES*/
+
+
+
+
+.bg-mac {
+  background-color: #D7DAE4 !important;
+}
+
+.bg-panda{
+  background-color: #1183B0 !important;
+}
+
+.bg-genlight{
+  background-color: #D34C17 !important;
+}
+
+.bg-genlight{
+  background-color: #D34C17 !important;
+}
+
+.bg-genlight{
+  background-color: #D34C17 !important;
+}
+
+.bg-grey{
+  background-color: #c0c0c0 !important;
+}
+
+.bg-defaulter{
+  background-color: #11B03E !important;
+}
+
+.theme_text {
+    color: #fff;
+    text-align: center;
+}
+
+.branchtextbox,.stocktxt, .changetxt, .termstxt, .costcentertxt, .txtannon, .reminderstxt,.componentitemtextbox{
+  margin-top:-3px;
+  padding:0px;
+  height:21px;
+}
+
+.stocktextuomlook.componentitemtextbox{
+  margin-top:0px;
+  padding:0px;
+  height:21px;
+}
+
+.syncbranchstation {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+/* ##################################################### JAOSKI UPDATE*/
+#POSliststable1{
+  height: 480px;
+}
+
+.postransitem{
+  height:540px;
+}
+
+.posicons{
+  margin-top:0%;
+  font-size:60px !important;
+}
+
+.posretailbtn{
+  height:188px;
+  width:173px;
+  border:solid 1px;
+}
+
+.poslabel{
+   font-size:20px;
+}
+
+
+
+@media all and (min-width: 320px) {
+    .navbar-custom-menu {
+      display:none;
+    }
+}
+
+
+@media all and (min-width: 1080px) {
+    .navbar-custom-menu {
+      display:block;
+    }
+}
+
+
+/* WTODO JAD 05-28-2019 */
+.ui-menu {
+  background: white;
+  border: solid 1px #c0c0c0;
+  width:250px;
+  padding:0;
+  height:250px;
+  overflow-y:auto;
+}
+.ui-menu .ui-menu-item{
+  display: block;
+  font-size:13px;
+  cursor: pointer;
+}
+.ui-menu .ui-menu-item:hover {
+  background: #c0c0c0;
+}

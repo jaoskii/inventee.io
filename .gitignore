@@ -1,0 +1,38 @@
+# --- Secrets / environment (recreate per environment, never commit) ---
+.env
+.env-backup
+.env.*
+!.env.example
+
+# --- Composer ---
+/vendor/
+
+# --- Yii runtime output (regenerated automatically) ---
+/assets/
+/backend/runtime/
+/backend/web/assets/
+/console/runtime/
+/frontend/runtime/
+/frontend/web/assets/
+/runtime/
+
+# --- Node / build tooling (if ever used) ---
+node_modules/
+
+# --- IDE / editor ---
+/nbproject/
+.idea/
+.vscode/
+*.sublime-*
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Logs / temp ---
+*.log
+*.swp
+*~
+
+# --- Personal notes (never publish) ---
+/jaoski-notes/

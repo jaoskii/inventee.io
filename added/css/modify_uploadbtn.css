@@ -1,0 +1,129 @@
+#fileselector {
+    margin: 10px; 
+}
+#upload-file-selector {
+    display:none;   
+}
+.margin-correction {
+    margin-right: 10px;   
+}
+
+/*SBC EXCLUSIVE*/
+#attachuploadedpicture-1 {
+    display:none;   
+}
+
+#attachuploadedpicture-2 {
+    display:none;   
+}
+
+#attachuploadedpicture-3 {
+    display:none;   
+}
+
+#attachuploadedpicture-4 {
+    display:none;   
+}
+/*SBC EXCLUSIVE*/
+
+
+
+#guploadedpicture-1 {
+    display:none;   
+}
+
+#guploadedpicture-2 {
+    display:none;   
+}
+
+#guploadedpicture-3 {
+    display:none;   
+}
+
+#guploadedpicture-4 {
+    display:none;   
+}
+
+#guploadedpicture-5 {
+    display:none;   
+}
+
+#guploadedpicture-6 {
+    display:none;   
+}
+
+#guploadedpicture-7 {
+    display:none;   
+}
+
+#guploadedpicture-8 {
+    display:none;   
+}
+
+#buploadedpicture-1 {
+    display:none;   
+}
+
+#buploadedpicture-2 {
+    display:none;   
+}
+
+#buploadedpicture-3 {
+    display:none;   
+}
+
+#buploadedpicture-4 {
+    display:none;   
+}
+
+#buploadedpicture-5 {
+    display:none;   
+}
+
+#catbuploadedpicture-1 {
+    display:none;   
+}
+
+#catbuploadedpicture-2 {
+    display:none;   
+}
+
+#catbuploadedpicture-3 {
+    display:none;   
+}
+
+#catbuploadedpicture-4 {
+    display:none;   
+}
+
+#catbuploadedpicture-5 {
+    display:none;   
+}
+
+#fbrbuploadedpicture-1 {
+    display:none;   
+}
+
+#fbrbuploadedpicture-2 {
+    display:none;   
+}
+
+#fbrbuploadedpicture-3 {
+    display:none;   
+}
+
+#fbrbuploadedpicture-4 {
+    display:none;   
+}
+
+#fbrbuploadedpicture-5 {
+    display:none;   
+}
+
+#fhuploadedpicture{
+    display:none;   
+}
+
+#huploadedpicture {
+    display:none;   
+}

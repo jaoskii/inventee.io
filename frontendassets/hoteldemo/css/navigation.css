@@ -1,0 +1,151 @@
+
+/*-------------------------------------------------*/
+/* =  Navigation
+/*-------------------------------------------------*/
+
+/* Navigation  */
+.nav-wrap {
+  float: right;
+}
+
+#nav {
+  position: relative;
+  background: #110907;
+}
+
+#nav > select {
+  display: none;
+}
+
+ul#navlist {
+  list-style: none; 
+  margin: 0;
+  padding: 0;
+  width: 1170px;
+  margin: auto;
+  text-align:center;
+}
+
+ul#navlist li {
+  position: relative;
+  padding: 10px 10px;
+  display:inline-block;
+}
+
+ul#navlist li a {
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: normal;
+  color: #fff;
+  font-family: Times;
+  padding: 10px 10px;
+  text-transform: uppercase;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+ul#navlist li.current > a,
+ul#navlist li > a:hover,
+ul#navlist li > a.selected {
+  color: #fff;
+  background: #000;
+}
+
+ul#navlist li a:hover {
+  color: #fff;}
+
+/* DropDown Menu = Superfish */
+.sf-menu {
+  line-height: 1.0;
+  overflow: visible !important;
+}
+
+.sf-menu .sub-menu {
+  position: absolute;
+  top: -999em;
+  width: 132%; /* left offset of submenus need to match (see below) */
+  margin: 0 !important;
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+.sf-menu ul li {
+  width: 100%;
+}
+
+.sf-menu li:hover {
+  visibility: inherit; /* fixes IE7 'sticky bug' */
+}
+
+.sf-menu li {
+  position: relative;
+}
+
+.sf-menu a {
+  display: block;
+  position: relative;
+}
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+  left: 0;
+  top: auto; /* match top ul list item height */
+  z-index: 99;
+}
+
+.sf-menu li:hover li ul,
+.sf-menu li.sfHover li ul {
+  top: -999em;
+}
+
+.sf-menu li li:hover ul,
+.sf-menu li li.sfHover ul {
+  left: 100%; /* match ul width */
+  top: 0;
+}
+
+.sf-menu li li:hover li ul,
+.sf-menu li li.sfHover li ul {
+  top: -999em;
+}
+
+.sf-menu li li li:hover ul,
+.sf-menu li li li.sfHover ul {
+  left: 100%; /* match ul width */
+  top: 0;
+}
+
+.sf-menu .sub-menu {
+  overflow: visible !important;
+}
+
+.sf-menu .sub-menu li {
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,.9);
+  padding-right: 0;
+  list-style: none;
+  margin-bottom: 1px;
+  padding: 0 !important;
+  text-align:left!important;
+}
+
+.sf-menu .sub-menu li:first-child {
+  border-top: 2px solid #31cec3;
+}
+
+.sf-menu .sub-menu a {
+  font-size: 1em !important;
+  font-weight: normal;
+  color: #fff;
+  padding: 12px 15px !important;
+  line-height: normal;
+  text-transform: none !important;
+}
+
+.sf-menu .sub-menu li a:hover {color:#31cec3!important;}
+
+.sub-menu span {
+  display: none;
+}

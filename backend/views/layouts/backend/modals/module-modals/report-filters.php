@@ -1,0 +1,1223 @@
+<input readonly="true" value ="<?php echo Yii::$app->session['loggeduser']['whcode']; ?>" type="hidden" class="defaultreportwh">
+<input type = "hidden" name ="rptdoc" id ="rptdoc" value="">
+<div class="modal-body">
+     <input type="hidden" name="reportname" id="reportname" value=""/>
+     
+     <?php
+          switch (Yii::$app->systemsettings->companyConfig()) {
+               case 'UNIVERSE':
+                    $unireadonly = "";
+               break;
+               
+               default:
+                    $unireadonly = "readonly";
+               break;
+          }//end switch
+     ?>
+
+     <div style="display: none;" class="printasdiv">
+     <label class="aimslabel repsons printas">Print as:</label><br>
+        <input type="radio" name="printing_type" value="default" checked><label class="aimslabel">&nbsp Default</label><br>
+        <input type="radio" name="printing_type" value='excel'><label class="aimslabel">&nbsp Print and Download as Excel</label>
+     </div>
+
+     <div style="display:none;" class="repobj customer-printout">                  
+          <label>Print type: </label></br>
+          <input type="radio" typers = "DCPDC" id="customer-printoutpdc" class="repsons customer-printout" name="customer-printout" value="DCPDC"> PDC<br>
+          <input type="radio" typers = "DCCC" id="customer-printoutcnc" class="repsons customer-printout"  name="customer-printout" value="DCCC"> Cash And Cheque<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-victorysignatory">                  
+          <label>Signatory: </label></br>
+          <input type="radio" class="repsons customer-paidunpaid" checked name="customer-paidunpaid" value="1"> Default<br>
+          <input type="radio" class="repsons customer-paidunpaid"  name="customer-paidunpaid" value="2"> per tenant<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-victoryopt">                  
+          <label>Option: </label></br>
+          <input type="radio" class="repsons customer-paidunpaid" checked name="customer-paidunpaid" value="1"> OR<br>
+          <input type="radio" class="repsons customer-paidunpaid"  name="customer-paidunpaid" value="2"> PR<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-unicomparativeout">                  
+          <label>Out Quantity Viewing: </label></br>
+          <input type="radio" class="repsons customer-comparativeout"  name="customer-comparativeout" value="SJ"> SJ<br>
+          <input type="radio" class="repsons customer-comparativeout" checked name="customer-comparativeout" value="TS"> TS<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-unicomparativeout1">                  
+          <label>Out Quantity Viewing (Loc 1): </label></br>
+          <input type="radio" class="repsons customer-unicomparativeout1"  name="customer-comparativeout1" value="SJ"> SJ<br>
+          <input type="radio" class="repsons customer-unicomparativeout1" checked name="customer-comparativeout1" value="TS"> TS<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-unicomparativeout2">                  
+          <label>Out Quantity Viewing (Loc 2): </label></br>
+          <input type="radio" class="repsons customer-comparativeout2"  name="customer-comparativeout2" value="SJ"> SJ<br>
+          <input type="radio" class="repsons customer-comparativeout2" checked name="customer-comparativeout2" value="TS"> TS<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-victorypayment">                  
+          <label>Payment: </label></br>
+          <input type="radio" class="repsons customer-paidunpaid" name="customer-paidunpaid" value="1"> Cash<br>
+          <input type="radio" class="repsons customer-paidunpaid"  name="customer-paidunpaid" value="2"> Cheque<br>
+          <input type="radio" class="repsons customer-paidunpaid" checked name="customer-paidunpaid" value="1"> All<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-victoryfilter">                  
+          <label>Filter: </label></br>
+          <input type="radio" class="repsons customer-paidunpaid" name="customer-paidunpaid" value="1"> per User<br>
+          <input type="radio" class="repsons customer-paidunpaid" checked name="customer-paidunpaid" value="2"> All<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-victorytype">                  
+          <label>Type: </label></br>
+          <input type="radio" class="repsons customer-paidunpaid" name="customer-paidunpaid" value="1"> A<br>
+          <input type="radio" class="repsons customer-paidunpaid"  name="customer-paidunpaid" value="2"> B<br>
+          <input type="radio" class="repsons customer-paidunpaid" checked name="customer-paidunpaid" value="2"> All<br>
+     </div>
+     
+     <div style="display:none;" class="repobj reportdefaults">
+         <label class="repsons generatedby">Generated by:</label>
+         <input type="text" class="reptxt repsons form-control generatedby" name="generatedby" value="<?php echo Yii::$app->session['loggeduser']['username'];?>"/></br>
+     </div>
+     
+     <div style="display:none;" class="repobj customer-startdate">
+          <div class="repsons customer-startdate" >               
+          <label class="repsons customer-startdate">Start Date:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="startdate" value="" size="12" class="txtstartdate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>
+     </div>           
+
+     <div style="display:none;" class="repobj customer-route">
+          <div class="repsons customer-route" >               
+          <label class="repsons customer-Route">Route:</label>
+          <div class="input-group">
+               <input readonly="true" name="route" value ="" type="text" class="reptxt reporttxtroute form-control input-sm">
+                 <input id="report-txtrouteid" name="reportrouteid" type="hidden" value="" class="input-sm form-control">
+               <div class="input-group-addon"><a class ="reportroute" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-enddate">
+          <div class="repsons customer-enddate" >               
+          <label class="repsons customer-enddate">End Date:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="enddate" value="" size="12" class="txtenddate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>      
+     </div>
+
+     <div style="display:none;" class="repobj customer-effectdate">
+          <div class="repsons customer-effectdate" >               
+          <label class="repsons customer-effectdate">Balance as of:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="asof" value="" size="12" class="txtenddate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>      
+     </div>
+
+     <div style="display:none;" class="repobj customer-effectdate2">
+          <div class="repsons customer-effectdate2" >               
+          <label class="repsons customer-effectdate2">Effective Date:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="effectivedate" readonly="" value="" size="12" class="txtenddate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>      
+     </div>
+
+<!-- //JEAR 091916 -->
+     <div style="display:none;" class="repobj customer-startdateenddate2">
+
+          <div class="repsons customer-startdateenddate2" >               
+          <label class="repsons customer-startdateenddate2">Start Date2:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="rttstartdate" value="" size="12" class="txtstartdate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>
+
+          <div class="repsons customer-startdateenddate2" >               
+          <label class="repsons customer-startdateenddate2">End Date2:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="rttenddate" value="" size="12" class="txtenddate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>      
+
+     </div>
+<!-- //JEAR 091916 -->
+     <div style="display:none;" class="repobj customer-startdateenddate3">
+
+          <div class="repsons customer-startdateenddate3" >               
+          <label class="repsons customer-startdateenddate3">Start Date3:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="rttstartdate3" value="" size="12" class="txtstartdate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>
+
+          <div class="repsons customer-startdateenddate3" >               
+          <label class="repsons customer-startdateenddate3">End Date3:</label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="rttenddate3" value="" size="12" class="txtenddate form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>      
+
+     </div>
+
+
+     <div style="display:none;" class="repobj asof">   
+
+          <?php
+          switch (Yii::$app->systemsettings->companyConfig()) {
+               case 'SOUTHCENTRAL':
+                    $aaa = "Renewal Month :";
+                    break;
+               
+               default:
+                    $aaa = "Balance as of :";
+                    break;
+          }
+          
+          ?>
+
+          <div class="repsons asof" >               
+          <label class="repsons asof"><?php echo $aaa; ?></label>
+          <div data-date-viewmode="days" data-date-format="yyyy-mm-dd" data-date=""  class="paedit input-group date dpYears">
+          <div class="dateid-lookup input-group-addon add-on"><a href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          <input type="text" name="enddate2" value="" size="12" class="txtenddate2 form-control input-sm" <?php echo $unireadonly; ?>>
+          </div>
+          </div>        
+     </div>
+
+     <div style="display:none;" class="repobj customer-rtttrnxtype">                  
+          <label>Trnx Type: </label></br>
+          <input type="radio"  class="repsons customer-rtttrnxtype"  name="customer-rtttrnxtype" value="A"> A<br>
+          <input type="radio"  class="repsons customer-rtttrnxtype"  name="customer-rtttrnxtype" value="B"> B<br>
+          <input type="radio"  id="default_rtttrnxtype" class="repsons customer-rtttrnxtype"  name="customer-rtttrnxtype" value="All"> All<br>
+     </div><br>
+
+     <div style="display:none;" class="repobj customer-universetrnxtype">                  
+          <label>Trnx Type: </label></br>
+          <input type="radio"  class="repsons customer-universetrnxtype"  name="customer-universetrnxtype" value="regular"> Regular<br>
+          <input type="radio"  class="repsons customer-universetrnxtype"  name="customer-universetrnxtype" value="senior"> Senior<br>
+          <input type="radio"  class="repsons customer-universetrnxtype"  name="customer-universetrnxtype" value="pwd"> PWD<br>
+          <input type="radio"  class="repsons customer-universetrnxtype"  name="customer-universetrnxtype" value="diplomat"> Diplomat<br>
+          <input type="radio"   class="repsons customer-universetrnxtype"  name="customer-universetrnxtype" checked value="All"> All<br>
+     </div><br>
+
+     <div style="display:none;" class="repobj customer-sign">                  
+          <label>Signatory: </label></br>
+          <input type="radio"  class="repsons customer-sign"  name="customer-sign" value="default"> Default<br>
+          <input type="radio"  id="default_sign" class="repsons customer-sign"  name="customer-sign" value="pertenant"> Per Tenant<br>
+     </div>
+
+<!-- WTODO: [KIM][2019.10.03][customer-jobno] -->
+     <div style="display:none;" class="repobj customer-jobno"> 
+          <div class="repsons customer-jobno">
+          <label class="repsons customer-jobno">J.O. No (Required):</label>
+          <div class="input-group">
+               <input readonly="true" name="jobnoid" value ="" type="text" class="reptxt reporttxtjobnoid form-control input-sm">
+               <div class="input-group-addon"><a class ="jobnolookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="stockjobnoid moduletxt" value="" name="stockjobnoid">
+          </div>
+          </div>
+     </div>
+
+     <!-- <div style="display:none;" class="repobj customer-client">
+          <div class="repsons customer-client" >               
+          <label class="repsons customer-client">Customer:</label>
+          <div class="input-group">
+               <input readonly="true" name="clientname" value ="" type="text" class="reptxt customerfilter reporttxtclientcode form-control input-sm">
+               <div class="input-group-addon"><a class ="reportclientlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div> -->
+     
+     <!-- REMOVE AFTER PATCHING FOR OTHER REPORTS -->
+     <div style="display:none;" class="repobj customer-client">
+          <div class="repsons customer-client" >               
+          <label class="repsons customer-client">Customer:</label>
+          <div class="input-group">
+               <input readonly="true" name="client-clientname" value ="" type="text" class="reptxt customerfilter reporttxtclientname2 form-control input-sm">
+               <input name="client-client" value ="" type="hidden" class="reptxt customerfilter reporttxtclientcode2 form-control input-sm">
+               <div class="input-group-addon"><a class ="reportclientlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>
+     
+      <!-- WTODO: [KIM][2019.09.16][Product type] -->
+     <div style="display:none;" class="repobj customer-prodtype"> 
+          <div class="repsons customer-prodtype">
+          <label class="repsons customer-prodtype">Product Type:</label>
+          <div class="input-group">
+               <input readonly="true" name="prodtypeid" value ="" type="text" class="reptxt reporttxtprodtypeid form-control input-sm">
+               <div class="input-group-addon"><a class ="prodtypelookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="stockprodtypeid moduletxt" value="" name="stockprodtypeid">
+          </div>
+          </div>
+     </div>
+
+     <!-- WTODO: [KIM][2019.09.17][Material] -->
+     <div style="display:none;" class="repobj customer-material"> 
+          <div class="repsons customer-material">
+          <label class="repsons customer-material">Material:</label>
+          <div class="input-group">
+               <input readonly="true" name="materialid" value ="" type="text" class="reptxt reporttxtmaterialid form-control input-sm">
+               <div class="input-group-addon"><a class ="materiallookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="stockmaterialid moduletxt" value="" name="stockmaterialid">
+          </div>
+          </div>
+     </div>
+     
+     <!-- WTODO JAD 06-03-2019 -->
+     <div style="display:none;" class="repobj customer-eventproject">
+          <div class="repsons customer-eventproject" >               
+          <label class="repsons customer-eventproject">Project:</label>
+          <div class="input-group">
+               <input readonly="true" name="project" value ="" type="text" class="reptxt eventprojectfilter reporttxteventproject form-control input-sm">
+               <div class="input-group-addon"><a class ="reporteventprojectlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div></br>
+          </div>
+     </div>
+     <div style="display:none;" class="repobj report-eventscheduletype">    
+          <label>Schedule Type: </label></br>
+          <select name='schedtype' class='repsons reptxt form-control txtreporttypeevent'></select>           
+     </div><br/>
+     <!-- WTODO JAD 06-03-2019 -->
+
+     <div style="display:none;" class="repobj customer-supplier">
+          <div class="repsons customer-supplier" >               
+          <label class="repsons customer-supplier">Supplier:</label>
+          <div class="input-group">
+               <input readonly="true" name="client-suppliername" value ="" type="text" class="reptxt supplierfilter reporttxtclientname3 form-control input-sm">
+               <input name="client-supplier" value ="" type="hidden" class="reptxt supplierfilter reporttxtclientcode3 form-control input-sm">
+               <div class="input-group-addon"><a class ="reportsuplookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>                  
+     </div>
+
+     <div style="display:none;" class="repobj customer-custsup">
+          <div class="repsons customer-supplier" >               
+          <label class="repsons customer-supplier">Customer/Supplier:</label>
+          <div class="input-group">
+               <input readonly="true" name="client-name" value ="" type="text" class="reptxt clientsuppfilter reporttxtcustsupname form-control input-sm">
+               <input name="client-code" value ="" type="hidden" class="reptxt clientsuppfilter reporttxtcustsup form-control input-sm">
+               <div class="input-group-addon"><a class ="reportcustsuplookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>                  
+     </div>
+
+     <!-- <div style="display:none;" class="repobj customer-agent">
+          <div class="repsons customer-agent" >               
+          <label class="repsons customer-agent">Agent:</label>
+          <div class="input-group">
+               <input readonly="true" name="agent" value ="" type="text" class="reptxt agentfilter reporttxtagentcode form-control input-sm">
+               <div class="input-group-addon"><a class ="reportagentlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div> -->
+
+     <div style="display:none;" class="repobj customer-agent">
+          <div class="repsons customer-agent" >               
+          <label class="repsons customer-agent">Agent:</label>
+          <div class="input-group">
+               <input readonly="true" name="client-agentname" value ="" type="text" class="reptxt agentfilter reporttxtagentname2 form-control input-sm">
+               <input name="client-agent" value ="" type="hidden" class="reptxt agentfilter reporttxtagentcode2 form-control input-sm">
+               <div class="input-group-addon"><a class ="reportagentlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>
+     
+     <div style="display:none;" class="repobj customer-rttinvpref">
+          <div class="repsons customer-rttinvpref" >               
+          <label class="repsons customer-rttinvpref">RTT Invoice Prefixes:</label>
+               <div class="input-group">
+               <select id="rttinvpref" name="rttinvpref" class="rttinvpref input-sm form-control">
+                    <option>ALL</option>
+                    <option>CA</option>
+                    <option>CH</option>
+                    <option>SJ</option>
+               </select>
+               </div></br>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-rttsalessummaryformat">                  
+          <label>Sales Formatting: </label></br>
+          <input type="radio"  class="repsons customer-rttsalessummaryformat" checked name="customer-rttsalessummaryformat" value="sales"> Sales Only<br>
+          <input type="radio"  class="repsons customer-rttsalessummaryformat"  name="customer-rttsalessummaryformat" value="salesret"> w/ Sales Return<br>
+     </div></br>
+
+     <div style="display:none;" class="repobj customer-destination">     
+          <div class="repsons customer-destination">
+          <label class="repsons customer-destination">Destination:</label>
+               <div class="input-group">
+               <input readonly="true" name="destination" value ="" type="text" class=" reportdestinationfilter form-control input-sm reptxt">
+                    <div class="input-group-addon"><a class ="reportwhdestinationlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-source">     
+          <div class="repsons customer-source">
+          <label class="repsons customer-source">Source:</label>
+               <div class="input-group">
+               <input readonly="true" name="source" value ="" type="text" class=" reportsourcefilter form-control input-sm  reptxt">
+                    <div class="input-group-addon"><a class ="reportwhsourcelookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>
+     </div>
+
+     <?php  switch (Yii::$app->systemsettings->companyConfig()) {
+               case 'YULICK': ?>
+                    <div style="display:none;" class="repobj customer-companypref">
+                         <div class="repsons customer-companypref" >               
+                         <label class="repsons customer-companypref">Company:</label>
+                         <div class="input-group">
+                              <input readonly="true" name="companypref" value ="" type="text" class="reptxt companypreffilter reporttxtcompanypref form-control input-sm">
+                              <div class="input-group-addon"><a class ="compreflookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                         </div>
+                         </div>
+                    </div>
+
+                    <div style="display:none;" class="repobj customer-companyprefgroup">   
+                         <div class="repsons customer-companyprefgroup">               
+                         <label class="repsons customer-companyprefgroup">Company Group:</label>
+                         <div class="input-group">
+                              <input readonly="true" name="companygroup" value ="" type="text" class="reptxt comgrouptxt form-control input-sm">
+                              <div class="input-group-addon"><a class ="comgrouplookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                         </div>
+                         </div>
+                    </div>
+
+                    <div style="display:none;" class="repobj customer-yourref">   
+                         <div class="repsons customer-yourref">               
+                         <label class="repsons customer-yourref">Yourref:</label>
+                         <div class="input-group">
+                              <input readonly="true" name="yourref" value ="" type="text" class="reptxt yourreftxt form-control input-sm">
+                              <div class="input-group-addon"><a class ="yourreflookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                         </div>
+                         </div>
+                    </div>   
+
+                    <div style="display:none;" class="repobj customer-yourref2">   
+                         <div class="repsons customer-yourref2">               
+                         <label class="repsons customer-yourref2">Yourref:</label>
+                         <div class="input-group">
+                              <input readonly="true" name="yourref2" value ="" type="text" class="reptxt yourref2txt form-control input-sm">
+                              <div class="input-group-addon"><a class ="yourref2lookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                         </div>
+                         </div>
+                    </div>     
+
+                    <div style="display:none;" class="repobj customer-ourref">   
+                         <div class="repsons customer-ourref">               
+                         <label class="repsons customer-ourref">Ourref:</label>
+                         <div class="input-group">
+                              <input readonly="true" name="ourref" value ="" type="text" class="reptxt ourreftxt form-control input-sm">
+                              <div class="input-group-addon"><a class ="ylickourreflookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                         </div>
+                         </div>
+                    </div>   
+
+                    <div style="display:none;" class="repobj customer-ourref2">   
+                         <div class="repsons customer-ourref2">               
+                         <label class="repsons customer-ourref2">Ourref:</label>
+                         <div class="input-group">
+                              <input readonly="true" name="ourref" value ="" type="text" class="reptxt ourref2txt form-control input-sm">
+                              <div class="input-group-addon"><a class ="ylickourreflookup2" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                         </div>
+                         </div>
+                    </div>    
+
+                    <!-- //YULICK MODIFICATION -->
+
+
+                    <!-- END -->
+
+               <?php break;
+     }?>
+
+
+     <div style="display:none;" class="repobj customer-account">
+          <div class="repsons customer-account" >               
+          <label class="repsons customer-account">Account:</label>
+          <div class="input-group">
+          <input name="account" readonly = "true" value="" type="text" class="moduletxt txtcontra form-control input-sm">
+                    <div class="input-group-addon"><a class ="btnshowcontra" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                    </div>
+          </div>               
+     </div>
+
+     <div style="display:none;" class="repobj customer-accountbank">
+          <div class="repsons customer-account" >               
+               <label class="repsons customer-account">Bank:</label>
+               <div class="input-group">
+                    <input name="bankname" readonly = "true" value="" type="text" class="moduletxt txtcontrabankname form-control input-sm">
+                    <input name="bankaccount" value="" type="hidden" class="moduletxt txtcontrabank form-control input-sm">
+                    <div class="input-group-addon"><a class ="btnshowcontrabank" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>               
+     </div>
+
+     <div style="display:none;" class="repobj customer-costcenter">
+          <div class="repsons customer-costcenter" >               
+          <label class="repsons customer-costcenter">Cost Center:</label>
+          <div class="input-group">
+               <input  name="costcenter" readonly = "true" value ="" type="text" class=" txtcostcenterfilter form-control input-sm">
+               <div class="input-group-addon"><a class ="reportcostcenterlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>               
+     </div>
+
+
+     <div style="display:none;" class="repobj customer-center">
+          <div class="repsons customer-center" >               
+          <label class="repsons customer-center">Center:</label>
+          <div class="input-group">
+               <input  name="center" readonly = "true" value ="<?php echo Yii::$app->session['loggeduser']['center'];?>" type="text" class=" txtcenterfilter form-control input-sm">
+               <div class="input-group-addon"><a class ="reportcenterlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>               
+     </div>
+
+     <div style="display:none;" class="repobj customer-attention">
+          <div class="repsons customer-attention" >               
+               <label class="repsons customer-attention">Attention :</label>
+               <div class="input-group">
+                    <input name="attention" value ="" type="text" class="reptxt txtattention form-control input-sm">
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj soa-notes">
+
+          <div class="repsons soa-notes" >               
+               <label class="repsons soa-notes">Notes:</label>
+               <div class="input-group">
+                    <textarea name="soa-notes" class="reptxt txtnotes form-control" style="resize: none;" rows="5" cols="100"></textarea>
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-soacustfilter">    
+          <label>Customer Filter</label></br>           
+          <input type="radio" class="repsons customer-soacustfilter1"  name="soacustfilter" value="single"> Per Customer<br>
+          <input type="radio" class="repsons customer-soacustfilter2"  name="soacustfilter" value="group"> By Customer Group
+     </div><br/>
+
+     <div style="display:none;" class="repobj customer-autorep">
+          <div class="repsons customer-autorep" >               
+               <label class="repsons customer-autorep">Authorized Representative :</label>
+               <div class="input-group">
+                    <input name="autorep" value ="" type="text" class="reptxt txtautorep form-control input-sm">
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-possition">
+          <div class="repsons customer-possition" >               
+               <label class="repsons customer-possition">Possition :</label>
+               <div class="input-group">
+                    <input name="possition" value ="" type="text" class="reptxt txtpossition form-control input-sm">
+               </div>
+          </div>
+     </div>
+     
+     <div style="display:none;" class="repobj customer-certified">
+          <div class="repsons customer-certified" >               
+               <label class="repsons customer-certified">Certified By :</label>
+               <div class="input-group">
+                    <input name="certified" value ="<?php echo Yii::$app->session['loggeduser']['username'];?>" type="text" class="reptxt txtcertified form-control input-sm">
+               </div>
+          </div>
+     </div>     
+
+     
+
+        
+
+     <!-- <div style="display:none;" class="repobj customer-item"> 
+          <div class="repsons customer-item">               
+          <label class="repsons customer-item">Item:</label>
+          <div class="input-group">
+               <input readonly="true" name="item" value ="" type="text" class="reptxt reportitemfilter form-control input-sm">
+               <div class="input-group-addon"><a class ="reportitemlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div> -->
+
+     <div style="display:none;" class="repobj customer-item"> 
+          <div class="repsons customer-item">               
+          <label class="repsons customer-item">Item:</label>
+          <div class="input-group">
+               <input readonly="true" name="item-itemname" value ="" type="text" class="reptxt reportitemname form-control input-sm">
+               <input name="item-itemcode" value ="" type="hidden" class="reptxt reportitemcode form-control input-sm">
+               <div class="input-group-addon"><a class ="reportitemlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>
+
+     <?php
+          switch (Yii::$app->systemsettings->companyConfig()) {
+               case 'MLCP':
+               echo '<div style="display:none;" class="repobj customer-fg_item">
+                    <div class="repsons customer-fg_item">               
+                    <label class="repsons customer-fg_item">Item:</label>
+                    <div class="input-group">
+                         <input readonly="true" name="item2" value ="" type="text" class="reptxt reportfgitemfilter form-control input-sm">
+                         <div class="input-group-addon"><a class ="reportfgitemlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+                         <input type="hidden" class="fgitemid reptxt" value="" name="itemid">
+                    </div>
+                    </div>
+               </div>';
+               break;
+          }//end iswitch
+     ?>
+     
+     
+     <!-- //WTODO: [JLY][FHI][11.26.2019][unserved po-duplicate item name] -->
+     <!-- WTODO: [KIM][2019.11.11][fg_item] -->
+     <div style="display:none;" class="repobj customer-fg_item"> 
+          <div class="repsons customer-fg_item">               
+          <label class="repsons customer-fg_item">Item:</label>
+          <div class="input-group">
+               <input readonly="true" name="item2" value ="" type="text" class="reptxt reportfgitemfilter form-control input-sm">
+               <div class="input-group-addon"><a class ="reportfgitemlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="fgitemid reptxt" value="" name="itemid">
+          </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-group">   
+          <?php
+          switch (Yii::$app->systemsettings->companyConfig()) {
+               case 'UNIVERSE':
+                    $group = "Division :";
+               break;
+               
+               default:
+                    $group = "Group :";
+               break;
+          }//end switch
+          ?>
+          <div class="repsons customer-group" >               
+          <label class="repsons customer-group"><?php echo $group; ?></label>
+          <div class="input-group">
+               <input readonly="true" name="groupid" value ="" type="text" class="reptxt reporttxtgroupid form-control input-sm">
+               <div class="input-group-addon"><a class ="grouplookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="stockgrpid reptxt" value="" name="stockgrpid">
+          </div>
+          </div>        
+     </div>
+     
+     <div style="display:none;" class="repobj customer-months">     
+          <div class="repsons customer-months">
+          <label class="repsons customer-months"># of Months:</label>
+               <div class="input-group">
+               <input name="nummonths" value ="" type="text" class=" reportnummonthsfilter form-control input-sm">
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-principal"> 
+          <div class="repsons customer-principal">
+          <label class="repsons customer-principal">Principal:</label>
+          <div class="input-group">
+               <input readonly="true" name="principalid" value ="" type="text" class="reptxt reporttxtprincipalid form-control input-sm">
+               <div class="input-group-addon"><a class ="principallookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="stockprincipalid reptxt" value="" name="stockprincipalid">
+          </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-division"> 
+          <div class="repsons customer-division">
+          <label class="repsons customer-division">Division:</label>
+          <div class="input-group">
+               <input readonly="true" name="divisionid" value ="" type="text" class="reptxt reporttxtdivisionid form-control input-sm">
+               <div class="input-group-addon"><a class ="divisionlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="stockdivisionid reptxt" value="" name="stockdivisionid">
+          </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-department"> 
+          <div class="repsons customer-department">
+          <label class="repsons customer-department">Department:</label>
+          <div class="input-group">
+               <input readonly="true" name="uv_department" value ="" type="text" class="reptxt reporttxtdepartment form-control input-sm">
+               <div class="input-group-addon"><a class ="departmentlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-user"> 
+          <div class="repsons customer-user">
+          <label class="repsons customer-user">User:</label>
+          <div class="input-group">
+               <input readonly="true" name="user" value ="" type="text" class="reptxt reporttxtuser form-control input-sm">
+               <div class="input-group-addon"><a class ="userlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-bref"> 
+          <div class="repsons customer-bref">
+          <label class="repsons customer-bref">Prefix:</label>
+          <div class="input-group">
+               <input readonly="true" name="bref" value ="" type="text" class="reptxt reporttxtbref form-control input-sm">
+               <div class="input-group-addon"><a class ="breflookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>     
+
+     <div style="display:none;" class="repobj customer-brand"> 
+          <div class="repsons customer-brand">
+          <label class="repsons customer-brand">Brand:</label>
+               <div class="input-group">
+               <input readonly="true" value ="" name="repbrand" type="text" class="reptxt reporttxtbrand input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="brandlookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+          </div>
+     </div>     
+
+     <!-- //WTODO: [JLY][2019.08.17][KINGG CONCERNS][ADD GROUP FILTER START] -->
+     <div style="display:none;" class="repobj customer-clientgroup"> 
+          <div class="repsons customer-clientgroup">
+          <label class="repsons customer-clientgroup">Group:</label>
+               <div class="input-group">
+               <input readonly="true" value ="" name="repgroup" type="text" class="reptxt reporttxtclientgroup input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="clientgrouplookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+          </div>
+     </div>     
+     <!-- //WTODO: [JLY][2019.08.17][KINGG CONCERNS][ADD GROUP FILTER END] -->
+
+     <div style="display:none;" class="repobj ckgjly-model"> 
+          <div class="repsons ckgjly-model">
+          <label class="repsons ckgjly-model">Generic:</label>
+               <div class="input-group">
+               <input readonly="true" name = "modelname" value ="" type="text" class="reptxt moduletxt reporttxtmodel input-sm form-control">
+               
+               <input id="modelid" name="modelid" type="hidden" value="" class="reportidmodel input-sm form-control reptxt"><div class="frmdocumentno input-group-addon"><a class ="modelreplookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-class"> 
+          <div class="repsons customer-class">
+          <label class="repsons customer-class">Class:</label>
+               <div class="input-group">
+               <input  readonly="true" name = "class" value ="" type="text" class="reptxt reporttxtclass input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="classlookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+               <!-- WTODO: [KIM][2019.09.23][add for classid] -->
+               <input type="hidden" name="classid" value="" class="reptxt txtclassid">
+          </div>
+     </div>
+
+     <!-- WTODO: [KIM][2019.10.28][filter for location] -->
+     <div style="display:none;" class="repobj item-loc"> 
+          <div class="repsons item-loc">
+          <label class="repsons item-loc">Location:</label>
+               <div class="input-group">
+                    <input  readonly="true" name = "loc" value ="" type="text" class="reptxt reporttxtloc input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="loclookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+          </div>
+     </div>
+     
+    <!--  //JEAR 091916  -->    
+     <div style="display:none;" class="repobj customer-category2">      
+          <div class="repsons customer-category2">
+          <label class="repsons customer-category2">Category:</label>
+               <div class="input-group">
+               <input  readonly="true" name = "category2" value ="" type="text" class="reptxt moduletxt reporttxtcategory2 input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="categorylookup2 proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+          </div>
+     </div>   
+
+     <div style="display:none;" class="repobj customer-assetcategory">      
+          <div class="repsons customer-assetcategory">
+          <label class="repsons customer-assetcategory">Category:</label>
+               <div class="input-group">
+               <input  readonly="true" name = "assetcategory" value ="" type="text" class="reptxt moduletxt reporttxtassetcategory input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="assetcategorylookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+          </div>
+     </div>     
+
+     <div style="display:none;" class="repobj customer-category">      
+          <div class="repsons customer-category">
+          <label class="repsons customer-category">Category:</label>
+               <div class="input-group">
+               <input  readonly="true" name = "category" value ="" type="text" class="reptxt reporttxtcategory input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="categorylookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+          </div>
+     </div>     
+
+
+     <div style="display:none;" class="repobj customer-part">
+          <?php
+          switch (Yii::$app->systemsettings->companyConfig()) {
+               case 'UNIVERSE':
+                    $part = "Category :";
+               break;
+               
+               default:
+                    $part = "Part :";
+               break;
+          }//end switch
+          ?>
+          <div class="repsons customer-part">
+          <label class="repsons customer-part"><?php echo $part; ?></label>
+               <div class="input-group">
+               <input readonly="true" name = "part" value ="" type="text" class="reptxt reporttxtpart input-sm form-control"><div class="frmdocumentno input-group-addon"><a class ="partlookup proplookup" href="#"><i class="fa fa-chevron-circle-down" ></i></a></div>
+               </div>
+               <input type="hidden" name="partid" value="" class="reptxt txtpartid">
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-uom">     
+          <div class="repsons customer-uom">
+          <label class="repsons customer-uom">Uom:</label>
+               <div class="input-group">
+                    <input readonly="true" name="uom" value ="" type="text" class="reptxt uomtxt form-control input-sm">
+                    <div class="input-group-addon"><a class ="uomlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-wh">     
+          <div class="repsons customer-wh">
+          <label class="repsons customer-wh">Warehouse:</label>
+               <div class="input-group">
+               <input readonly="true" name="warehouse" value ="<?php echo Yii::$app->session['loggeduser']['whcode']; ?>" type="text" class=" reportwhfilter form-control input-sm">
+                    <div class="input-group-addon"><a class ="reportwhlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>
+     </div>   
+
+     <div style="display:none;" class="repobj customer-loc1">     
+          <div class="repsons customer-loc1">
+          <label class="repsons customer-loc1">Select Location 1:</label>
+               <div class="input-group">
+               <input readonly="true" name="location1" value ="<?php echo Yii::$app->session['loggeduser']['whcode']; ?>" type="text" class=" reportwh-locfilter1 form-control input-sm">
+                    <div class="input-group-addon"><a class ="reportwhloc1lookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>
+     </div>   
+
+     <div style="display:none;" class="repobj customer-loc2">     
+          <div class="repsons customer-loc2">
+          <label class="repsons customer-loc2">Select Location 2:</label>
+               <div class="input-group">
+               <input readonly="true" name="location2" value ="<?php echo Yii::$app->session['loggeduser']['whcode']; ?>" type="text" class=" reportwh-locfilter2 form-control input-sm">
+                    <div class="input-group-addon"><a class ="reportwhloc2lookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>
+     </div>   
+
+
+     <div style="display:none;" class="repobj customer-prepared">
+          <div class="repsons customer-prepared" >               
+          <label class="repsons customer-prepared">Prepared By:</label>
+          <div class="input-group">
+               <input name="prepared" value ="<?php echo Yii::$app->session['loggeduser']['username'];?>" type="text" class="reptxt txtprepared form-control input-sm">
+          </div>
+          </div>
+     </div> 
+
+     <div style="display:none;" class="repobj customer-notedby">
+          <div class="repsons customer-notedby" >               
+          <label class="repsons customer-notedby">Noted By:</label>
+          <div class="input-group">
+               <input name="notedby" value ="" type="text" class="reptxt txtnotedby form-control input-sm">
+          </div>
+          </div>
+     </div>    
+
+     <div style="display:none;" class="repobj customer-approved">
+          <div class="repsons customer-approved" >               
+          <label class="repsons customer-approved">Approved By:</label>
+          <div class="input-group">
+               <input name="approved" value ="" type="text" class="reptxt txtapproved form-control input-sm">
+          </div>
+          </div>                 
+          
+     </div>    
+
+     <div style="display:none;" class="repobj customer-days">     
+          <div class="repsons customer-days">
+          <label class="repsons customer-days">Number of Days:</label>
+               <div class="input-group">
+               <input name="days" value ="" type="text" class=" reportndaysfilter form-control input-sm">
+               </div>
+          </div>
+     </div>     
+
+     <div style="display:none;" class="repobj customer-tops">     
+          <div class="repsons customer-tops">
+          <label class="repsons customer-tops">Top (# of Items):</label>
+               <div class="input-group">
+               <input name="top" value ="" type="text" class=" reporttopfilter form-control input-sm">
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-year">
+
+          <div class="repsons customer-year" >               
+          <label class="repsons customer-year">Year:</label>
+          <div class="input-group">
+               <input name="year" value ="<?php echo date('Y'); ?>" type="text" class="txtyear form-control input-sm">
+          </div>
+          </div>               
+     </div> 
+
+     <div style="display:none;" class="repobj customer-pref">
+
+          <div class="repsons customer-pref" >               
+          <label class="repsons customer-pref">Please type Sales Prefix (Seperated by Comma):</label>
+          <div class="input-group">
+               <input name="pref" value ="" type="text" class="txtprefix form-control input-sm">
+          </div>
+          </div>               
+     </div> 
+     
+
+     <div style="display:none;" class="repobj customer-area">   
+          <div class="repsons customer-area">               
+          <label class="repsons customer-area">Area:</label>
+          <div class="input-group">
+               <input readonly="true" name="area" value ="" type="text" class="reptxt areatxt form-control input-sm">
+               <div class="input-group-addon"><a class ="arealookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>     
+
+     <div style="display:none;" class="repobj customer-region">
+          <div class="repsons customer-region">
+          <label class="repsons customer-region">Region:</label>
+          <div class="input-group">
+               <input readonly="true" name="region" value ="" type="text" class="reptxt regiontxt form-control input-sm">
+               <div class="input-group-addon"><a class ="regionlookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+          </div>
+          </div>
+     </div>     
+
+     <div style="display:none;" class="repobj customer-province">
+          <div class="repsons customer-province">
+          <label class="repsons customer-province">Province:</label>
+               <div class="input-group">
+                    <input readonly="true" name="province" value ="" type="text" class="reptxt provincetxt form-control input-sm">
+                    <div class="input-group-addon"><a class ="provincelookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj customer-customeragent">                  
+          <label>Group by: </label></br>
+          <input type="radio" id="ioptions" class="repsons customer-customeragent" name="customer-customeragent" value="client"> Customer<br>
+          <input type="radio" class="repsons customer-customeragent"  name="customer-customeragent" value="agent"> Agent
+     </div>
+
+     <div style="display:none;" class="repobj customer-customershowtin">                  
+          <label>Show Customer w/ TIN Only: </label></br>
+          <input type="radio"  class="repsons customer-customershowtin " name="customer-customershowtin" value="1"> Yes<br>
+          <input type="radio" class="repsons customer-customershowtin defaultchecked"  name="customer-customershowtin" value="0"> No
+     </div>
+
+
+<!-- JAC -->
+
+<div style="display:none;" class="repobj customer-nonbelow">                  
+          <label>Option: </label></br>
+          <input type="radio" id="ioptions" class="repsons customer-nonbelow" name="customer-nonbelow" value="none"> None<br>
+          <input type="radio" class="repsons customer-nonbelow"  name="customer-nonbelow" value="below"> Inventory Balance - Below Minimum<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-sortbarcodedesc">                  
+          <label>Arrange by: </label></br>
+          <input type="radio" class="repsons customer-sortbarcodedesc" name="customer-sortbarcodedesc" value="barcode" checked> Barcode<br>
+          <input type="radio" class="repsons customer-sortbarcodedesc"  name="customer-sortbarcodedesc" value="itemname"> Description<br>
+     </div>
+
+     <div style="display:none;" class="repobj report-sortascdesc">                  
+          <label>Sort by: </label></br>
+          <input type="radio" class="repsons report-sortascdesc" name="report-sortascdesc" value="asc" checked> Accending<br>
+          <input type="radio" class="repsons report-sortascdesc"  name="report-sortascdesc" value="desc"> Descending<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-purchasetype">    
+          <label>Purchase Type: </label></br>           
+          <input type="radio" id ="purchasetypecash" class="repsons customer-purchasetype"  name="purchasetype" value="cash"> Cash<br>
+          <input type="radio" id ="purchasetypecheck" class="repsons customer-purchasetype"  name="purchasetype" value="check"> Check<br/>
+          <input type="radio" id ="purchasetypeboth" class="repsons customer-purchasetype"  name="purchasetype" value="both" checked> Both<br/><br>
+     </div>
+     
+     <div style="display:none;" class="repobj customer-iteminclude">                  
+          <label>Include: </label></br>
+          <input type="radio" class="repsons customer-iteminclude" name="customer-iteminclude" value="0"> Active<br>
+          <input type="radio" class="repsons customer-iteminclude"  name="customer-iteminclude" value="1"> Inactive<br>
+          <input type="radio" class="repsons customer-iteminclude"  name="customer-iteminclude" value="0,1" checked> All<br>
+     </div>
+
+<!-- end JAC -->
+     <div style="display:none;" class="repobj item-optionamtqtytons">                  
+          <label>Option: </label></br>
+          <input type="radio" id="ioptions" class="repsons item-optionamtqtytons"  name="item-optionamtqtytons" value="amt"> Amount<br>
+          <input type="radio"  class="repsons item-optionamtqtytons"  name="item-optionamtqtytons" value="qty"> Quantity<br>
+          <input type="radio"  class="repsons item-optionamtqtytons"  name="item-optionamtqtytons" checked value="tons"> Tons<br>
+     </div>
+
+     <div style="display:none;" class="repobj item-optionamtqty">                  
+          <label>Option: </label></br>
+          <input type="radio" id="ioptions" class="repsons item-optionamtqty"  name="item-optionamtqty" checked value="sales"> Amount<br>
+          <input type="radio"  class="repsons item-optionamtqty"  name="item-optionamtqty" value="qty"> Quantity<br>
+     </div>
+
+     <div style="display:none;" class="repobj item-optionsoavatprint">                  
+          <label>Option: </label></br>
+          <input type="radio" id="vatprintall" class="repsons item-vatprintall"  name="item-vatprint" checked value="ALL"> All<br>
+          <input type="radio" class="repsons item-vatprintall"  name="item-vatprint" value="NON-VATABLE"> NON-VATABLE<br>
+          <input type="radio" class="repsons item-vatprintall"  name="item-vatprint" value="VATABLE"> VATABLE<br>
+          <input type="radio" class="repsons item-vatprintall"  name="item-vatprint" value="ZERO-RATED"> ZERO-RATED<br>
+          <input type="radio" class="repsons item-vatprintall"  name="item-vatprint" value=""> BLANK
+     </div>
+
+      <div style="display:none;" class="repobj user-attemptstatus">                  
+          <label>Attempt : </label></br>
+          <input type="radio" id="vatprintall" class="repsons user-attemptstatus"  name="attempt_status" checked value="ALL"> All<br>
+          <input type="radio" class="repsons user-attemptstatus"  name="attempt_status" value="1"> SUCCESSFUL<br>
+          <input type="radio" class="repsons user-attemptstatus"  name="attempt_status" value="0"> UNSUCCESSFUL
+     </div>
+
+      <div style="display:none;" class="repobj user-isvalid">                  
+          <label>Validity: </label></br>
+          <input type="radio" id="vatprintall" class="repsons user_isvalid"  name="user_validity" checked value="ALL"> All<br>
+          <input type="radio" class="repsons user_isvalid"  name="user_validity" value="1"> VALID<br>
+          <input type="radio" class="repsons user_isvalid"  name="user_validity" value="0"> INVALID
+     </div>
+
+     <div style="display:none;" class="repobj customer-salesreporttype">                  
+          <label>Type of Report: </label></br>
+          <input type="radio" id="sreport" class="repsons customer-salesreporttype"  name="customer-salesreporttype" checked value="report"> Sales Report<br>
+          <input type="radio" class="repsons customer-salesreporttype"  name="customer-salesreporttype" value="lessreturn"> Sales Less Return<br>
+          <input type="radio" class="repsons customer-salesreporttype"  name="customer-salesreporttype" value="return"> Sales Return<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-purchasereporttype">                  
+          <label>Type of Report: </label></br>
+          <input type="radio" id="preport" class="repsons customer-purchasereporttype"  name="customer-purchasereporttype" value="report"> Purchase Report<br>
+          <input type="radio" class="repsons customer-purchasereporttype"  name="customer-purchasereporttype" value="lessreturn"> Purchase Less Return<br>
+          <input type="radio" class="repsons customer-purchasereporttype"  name="customer-purchasereporttype" value="return"> Purchase Return<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-paidunpaid">                  
+          <label>Option: </label></br>
+          <input type="radio" class="repsons customer-paidunpaid" name="customer-paidunpaid" value="1"> Paid<br>
+          <input type="radio" class="repsons customer-paidunpaid"  name="customer-paidunpaid" value="2"> Unpaid<br>
+          <input type="radio" class="repsons customer-paidunpaid"  name="customer-paidunpaid" value="3" checked> All<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-reporttransaction">                  
+          <label>Date based on: </label></br>
+          <input type="radio" id="transactiondate" class="repsons customer-reporttransaction"  name="customer-reporttransaction" value="transactiondate"> Transaction Date<br>
+          <input type="radio" class="repsons customer-reporttransaction"  name="customer-reporttransaction" value="checkdate"> Check Date<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-ssortby2">                  
+          <label>Sort By: </label></br>
+          <input type="radio" class="repsons customer-ssortby2" name="customer-ssortby2" value="client"> Supplier<br>
+          <input type="radio" class="repsons customer-ssortby2"  name="customer-ssortby2" value="area"> Area<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-dsalesrepsortby">                  
+          <label>Sort By: </label></br>
+          <input type="radio" checked class="repsons customer-dsalesrepsortby" name="customer-dsalesrepsortby" value="asc_transdate"> Ascending by Trans date<br>
+          <input type="radio" class="repsons customer-dsalesrepsortby"  name="customer-dsalesrepsortby" value="asc_itemname"> Ascending by Itemname<br>
+     </div>
+     
+     <!-- WTODO: [KIM][2019.11.14][default checked] -->
+     <div style="display:none;" class="repobj customer-poststatus">    
+          <label>Type of Transaction: </label></br>           
+          <input type="radio" id = "posted" class="repsons customer-poststatus"  name="poststatus" checked value="posted"> Posted Transaction<br>
+          <input type="radio" id ="unposted" class="repsons customer-poststatus"  name="poststatus" value="unposted"> Unposted Transaction<br>
+     </div>
+
+          <!-- WTODO JAD 06-03-2019 -->
+     <div style="display:none;" class="repobj customer-jlypoststatus">    
+          <label>Type of Transaction: </label></br>           
+          <input type="radio" id = "posted" class="repsons customer-jlypoststatus"  name="jlypoststatus" value="posted"> Posted Transaction<br>
+          <input type="radio" id ="unposted" class="repsons customer-jlypoststatus"  name="jlypoststatus" value="unposted"> Unposted Transaction<br>
+          <input type="radio" id ="all" class="repsons customer-jlypoststatus"  checked='' name="jlypoststatus" value="all"> All Transaction
+     </div><br/>
+     
+     <div style="display:none;" class="repobj customer-reporttype">                  
+          <label>Type of Reports: </label></br>    
+          <input type="radio" id="detailed" class="repsons customer-reporttype" name="reporttype" value="detailed"> Detailed<br>
+          <input type="radio" class="repsons customer-reporttype" name="reporttype" value="summarized"> Summarized<br>
+     </div>
+     
+     <div style="display:none;" class="repobj customer-reporttype2">                  
+          <label>Type of Reports: </label></br>    
+          <input type="radio" id="detailedtype2" class="repsons customer-reporttype2" name="reporttype2" value="detailed"> Detailed<br>
+          <input type="radio" class="repsons customer-reporttype2" name="reporttype2" value="summarized"> Summarized<br>
+          <input type="radio" class="repsons customer-reporttype2" name="reporttype2" value="summarized2"> Summarized with Sales Return<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-sortby">                  
+          <label>Sort By: </label></br>
+          <input type="radio" id="sdocno" class="repsons customer-sortby"  name="customer-sortby" value="docno"> Document #<br>
+          <input type="radio" class="repsons customer-sortby"  name="customer-sortby" value="dateid"> Date<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-transtype">              
+          <label>Type of Transaction: </label> </br>      
+          <input type="radio" id="sclient" class="repsons customer-transtype"  name="transtype" value="client"> Customer<br>
+          <input type="radio" class="repsons customer-transtype"  name="transtype" value="item"> Item<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-analyzedby">              
+          <label>Analyze By: </label> </br>    
+          <input type="radio" id="value" class="repsons customer-analyzedby"  name="analyzedby" value="value"> Value Purchased<br>
+          <input type="radio" class="repsons customer-analyzedby"  name="analyzedby" value="unit"> Unit Purchased</br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-itemtype">              
+          <label>Item Type: </label> </br>    
+          <input type="radio" class="repsons customer-itemtype"  name="itemtype" value="local"> Local<br>
+          <input type="radio" class="repsons customer-itemtype"  name="itemtype" value="import"> Import</br>
+          <input type="radio" id="both" class="repsons customer-itemtype"  name="itemtype" value="both"> Both<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-itemstock">              
+          <label>Item Stock: </label> </br>    
+          <input type="radio" class="repsons customer-itemstock"  name="itemstock" value="1"> With Balance<br>
+          <input type="radio" class="repsons customer-itemstock"  name="itemstock" value="0"> Without Balance</br>
+          <input type="radio" id="inone" class="repsons customer-itemstock"  name="itemstock" value="1,0"> none<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-amountformat">              
+          <label>Amount Format: </label> </br>    
+          <input type="radio" class="repsons customer-amountformat"  name="amountformat" value="isamt"> Show Selling Price<br>
+          <input type="radio" class="repsons customer-amountformat"  name="amountformat" value="rrcost"> Show Latest Cost</br>
+          <input type="radio" id="none" class="repsons customer-amountformat"  name="amountformat" value="none"> None
+          <br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-sortbysupplier">                  
+          <label>Sort By: </label></br>
+          <input type="radio" id="pclient" class="repsons customer-sortbysupplier" name="customer-sortbysupplier" value="client"> Supplier<br>
+          <input type="radio" class="repsons customer-sortbysupplier"  name="customer-sortbysupplier" value="item"> Item
+          <br>
+     </div>
+     
+     <div style="display:none;" class="repobj customer-poststatus2">    
+          <label>Type of Transaction: </label></br>           
+          <input type="radio" id = "all" class="repsons customer-poststatus2"  name="poststatus2" checked value="all"> All <br>
+          <input type="radio" id = "posted" class="repsons customer-poststatus2"  name="poststatus2" value="posted"> Posted Transaction <br>
+          <input type="radio" id ="unposted" class="repsons customer-poststatus2"  name="poststatus2" value="unposted"> Unposted Transaction<br>
+     </div>
+
+     
+     <div style="display:none;" class="repobj customer-optsalestype">                  
+          <label>Sales Type: </label></br>
+          <input type="radio"  class="repsons customer-optsalestype"  name="customer-optsalestype" value="Cash"> Cash<br>
+          <input type="radio"  class="repsons customer-optsalestype"  name="customer-optsalestype" value="Charge"> Charge<br>
+          <input type="radio"  class="repsons customer-optsalestype"  name="customer-optsalestype" value="Check"> Check<br>
+          <input type="radio"  class="repsons customer-optsalestype"  name="customer-optsalestype" value="Deposit"> Deposit<br>
+          <input type="radio"  id="ioptionsss" class="repsons customer-optsalestype"  name="customer-optsalestype" checked value="All"> All<br>
+     </div>
+     
+     <div style="display:none;" class="repobj customer-rtttrnxtype">                  
+          <label>Trnx Type: </label></br>
+          <input type="radio"  class="repsons customer-rtttrnxtype"  name="customer-rtttrnxtype" value="A"> A<br>
+          <input type="radio"  class="repsons customer-rtttrnxtype"  name="customer-rtttrnxtype" value="B"> B<br>
+          <input type="radio"  id="default_rtttrnxtype" class="repsons customer-rtttrnxtype"  name="customer-rtttrnxtype" value="All"> All<br>
+     </div></br>
+
+
+     <div style="display:none;" class="repobj customer-optvat">                  
+          <label>Vat: </label></br>
+          <input type="radio"  class="repsons customer-optvat"  name="customer-optvat" value="Vat"> Vat<br>
+          <input type="radio"  class="repsons customer-optvat"  name="customer-optvat" value="Nvat"> NVat<br>
+          <input type="radio"  id="ioptionss" class="repsons customer-optvat"  name="customer-optvat" value="All"> All<br>
+     </div>
+
+     <div style="display:none;" class="repobj universecustomer-optvat">                  
+          <label>Vat: </label></br>
+          <input type="radio" id="vatprintall" class="repsons customer-vattype"  name="customer-vattype" checked value="ALL"> All<br>
+          <input type="radio" class="repsons customer-vattype"  name="customer-vattype" value="NON-VATABLE"> NON-VATABLE<br>
+          <input type="radio" class="repsons customer-vattype"  name="customer-vattype" value="VATABLE"> VATABLE<br>
+          <input type="radio" class="repsons customer-vattype"  name="customer-vattype" value="ZERO-RATED"> ZERO-RATED<br>
+          <input type="radio" class="repsons customer-vattype"  name="customer-vattype" value=""> BLANK
+     </div>
+
+     <div style="display:none;" class="repobj report-sortsummvat">                  
+          <label>Sort by: </label></br>
+          <input type="radio" class="repsons sortsummvat-default report-sortsummvat" name="report-sortsummvat" value="docno" checked> Document #<br>
+          <input type="radio" class="repsons report-sortsummvat"  name="report-sortsummvat" value="dateid"> Date<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-uvcategory"> 
+          <div class="repsons customer-uvcategory">
+          <label class="repsons customer-uvcategory">Category:</label>
+          <div class="input-group">
+               <input readonly="true" name="uvcategoryid" value ="" type="text" class="reptxt reporttxtuvcategoryid form-control input-sm">
+               <div class="input-group-addon"><a class ="uvcategorylookup" href="#"><i class="fa fa-chevron-circle-down"></i></a></div>
+               <input type="hidden" class="stockuvcategoryid reptxt" value="" name="stockuvcategoryid">
+          </div>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj item-uvpricegroup"> 
+          <div class="repsons item-uvpricegroup">
+          <label class="repsons item-uvpricegroup">Price Type:</label>
+          <select id="pricegroup" name='pricegroup' class="pricegroup input-sm form-control"><?php if(isset($customerdata)){echo '<option>'.$customerdata['pricegroup'] . '</option>';}?></select>
+          </div>
+     </div>
+
+     <div style="display:none;" class="repobj item-unit">                  
+          <label>Unit: </label></br>
+          <input type="radio" class="repsons item-unit" name="item-unit" value="retail" checked> Retail<br>
+          <input type="radio" class="repsons item-unit"  name="item-unit" value="purchase"> Purchasing<br>
+     </div>
+
+     <div style="display:none;" class="repobj view-amt-field">                  
+          <label>View Amount Fields?: </label></br>
+          <input type="radio" class="repsons view-amt-field" name="view-amt-field" value="1" checked> Yes<br>
+          <input type="radio" class="repsons view-amt-field"  name="view-amt-field" value="0"> No<br>
+     </div>
+
+     <div style="display:none;" class="repobj customer-salesinclude">                  
+          <label>Include: </label></br>
+          <input type="radio" class="repsons customer-salesinclude"  name="customer-salesinclude" value="allsales" checked> All<br>
+          <input type="radio" class="repsons customer-salesinclude" name="customer-salesinclude" value="wsales"> With Sales<br>
+          <input type="radio" class="repsons customer-salesinclude"  name="customer-salesinclude" value="woutsales"> Without Sales<br>
+          
+     </div> 
+
+
+
+     <div style="display:none;" class="repobj customer-itemstatus">              
+          <label>Status: </label> </br>    
+          <input type="radio" class="repsons customer-itemstatus" name="customer-itemstatus" value="0"> Active<br>
+          <input type="radio" class="repsons customer-itemstatus"  name="customer-itemstatus" value="1"> Inactive<br>
+          <input type="radio" class="repsons customer-itemstatus"  name="customer-itemstatus" value="0,1" checked> All<br>
+     </div>
+
+     <!-- WTODO: [KIM][2019.11.12][add filter for class checkbox] -->
+     <div style="display:none;" class="repobj customer-checkboxclass"> 
+          <div class="repsons repobj customer-checkboxclass">
+          <label class="repsons repobj customer-checkboxclass">Classification:</label>
+          </div>
+     </div>
+</div>
