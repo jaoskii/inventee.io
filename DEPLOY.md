@@ -54,7 +54,7 @@ chmod -R 775 backend/runtime console/runtime assets
 ## 6. Database
 
 - Import schema/dump into the `DB_SCHEMA` database.
-- Stored procedures / triggers documented in `solutionbase/` txt files — apply the ones relevant to the release.
+- Stored procedures / triggers documented in `jaoski-notes/` txt files (local only, not in git) — apply the ones relevant to the release.
 
 ## Checklist
 

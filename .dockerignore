@@ -7,10 +7,8 @@ vendor
 backend/runtime
 console/runtime
 assets/*
-backendassets/*
-frontendassets/*
 graphify-out
-solutionbase
+jaoski-notes
 UPGRADE-PHP8.md
 README.md
 LICENSE.md
