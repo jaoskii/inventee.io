@@ -20,6 +20,7 @@ BackendAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="shortcut icon" href="<?php echo Yii::$app->homeUrl;?>fimages/inventee/favicon/favicon.ico">
     <?php $this->head() ?>
 <style type="text/css">
 body{
@@ -123,7 +124,7 @@ switch (Yii::$app->session['loggeduser']['theme']) {
             <div class="account-wall">
                 <div id="my-tab-content" class="tab-content">
                     <div class="tab-pane active" id="login" style="margin-right:30px;margin-left:30px;">
-                        <img class="profile-img" src="<?php echo Yii::$app->homeUrl;?>backendassets/img/aims_login.png" alt="">
+                        <img class="profile-img" src="<?php echo Yii::$app->homeUrl;?>fimages/inventee/png/logo-icon.png" alt="Inventee">
                         <div id="overlay"></div>
                         <?= $content ?>
                     </div>

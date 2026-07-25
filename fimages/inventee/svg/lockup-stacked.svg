@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150">
+<g transform="translate(84,6)">
+<circle cx="36" cy="36" r="36" fill="#2AAB4C"></circle>
+<rect x="18" y="30" width="9" height="22" rx="2" fill="#fff"></rect>
+<rect x="31" y="34" width="9" height="18" rx="2" fill="#fff"></rect>
+<rect x="26" y="40" width="14" height="3" rx="1.5" fill="#2AAB4C" transform="rotate(-40 33 41)"></rect>
+<circle cx="35.5" cy="22" r="4.5" fill="#fff"></circle>
+<rect x="44" y="14" width="9" height="38" rx="2" fill="#fff"></rect>
+</g>
+<rect x="47" y="92" width="10" height="27" rx="3" fill="#fff"></rect>
+<rect x="42.5" y="101" width="14" height="3" rx="1.5" fill="#2AAB4C" transform="rotate(-40 49.5 102)"></rect>
+<circle cx="52" cy="84" r="5" fill="#fff"></circle>
+<text x="63.5" y="119" font-family="Nunito, &#39;Segoe UI&#39;, sans-serif" font-weight="800" font-size="38" fill="#2AAB4C">nventee</text>
+</svg>

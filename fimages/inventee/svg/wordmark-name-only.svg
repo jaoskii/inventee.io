@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60">
+<rect x="6" y="19" width="12" height="27" rx="3" fill="#fff"></rect>
+<rect x="1" y="28" width="17" height="4" rx="2" fill="#2AAB4C" transform="rotate(-40 9.5 30)"></rect>
+<circle cx="12" cy="9" r="6" fill="#fff"></circle>
+<text x="24" y="45" font-family="Nunito, &#39;Segoe UI&#39;, sans-serif" font-weight="800" font-size="48" fill="#2AAB4C">nventee</text>
+</svg>
