@@ -23,6 +23,7 @@ WORKDIR /var/www/html
 COPY . .
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction \
+    && ln -sf bower-asset vendor/bower \
     && mkdir -p backend/runtime console/runtime assets backendassets \
     && chown -R www-data:www-data backend/runtime console/runtime assets backendassets fimages
 
