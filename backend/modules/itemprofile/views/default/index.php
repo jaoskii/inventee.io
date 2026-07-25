@@ -173,12 +173,12 @@ $this->title = 'Item Profile';
                                     <?php 
                                         if(isset($stockcarddata)){
                                             if(empty($stockcarddata[0]['picture'])){
-                                                $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                                $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                             }else{
                                                 $str = $stockcarddata[0]['picture'];
                                             }
                                         }else{
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" class="thumbnail recordpicture">

@@ -21,7 +21,7 @@ use yii\helpers\Url;
                                 <?php 
                                 for($itemindex = 0; $itemindex < 3; $itemindex += 1){
                                 if($topitems[$itemindex]['picture'] == "" || $topitems[$itemindex]['barcode'] == null){
-                                   $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                   $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                 }else{
                                    $str = $topitems[$itemindex]['picture'];
                                 }
@@ -57,7 +57,7 @@ use yii\helpers\Url;
                     <?php
                         foreach($topitems as $topitem){
                         if($topitem['picture'] == "" || $topitem['picture'] == null){
-                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                         }else{
                             $str = $topitem['picture'];
                         }

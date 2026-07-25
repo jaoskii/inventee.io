@@ -3,7 +3,7 @@ use yii\helpers\Url;
 $create = strtotime(Yii::$app->session['loggeduser']['create']);
 
 if(Yii::$app->session['loggeduser']['pic'] == "" || Yii::$app->session['loggeduser']['pic'] == null){
-    $userpic = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+    $userpic = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
 }else{
     $userpic = Yii::$app->session['loggeduser']['pic'];
 }//end

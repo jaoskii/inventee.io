@@ -94,7 +94,7 @@
 
       						<div class="col-md-6">
       							<div class="row">
-      								<img style="width: 250px;" class="pull-right" id="choicemenuimg" src="<?= Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg' ?>">
+      								<img style="width: 250px;" class="pull-right" id="choicemenuimg" src="<?= Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png' ?>">
       							</div>
       							
       							<div class="row pull-right" style="margin-right: 10px;">

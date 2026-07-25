@@ -556,7 +556,7 @@ function loadEventComments(eventid,type){
         $.each(data.comments, function(commentindx, commentinfo) {                
             strhtml = strhtml.concat("<div class='box-comment' style='margin-bottom:3px;'>");
             if(data.comments[commentindx]['picture'] == null || data.comments[commentindx]['picture'] == ""){
-              var pic = domain +'/frontendassets/images/product-details/defaultimg.jpg';
+              var pic = domain +'/fimages/inventee/png/placeholder.png';
             }else{
               var pic = data.comments[commentindx]['picture'];
             }//end
@@ -885,7 +885,7 @@ function loadScheduleNotes(seq,type){
         $('.viewnotearea').html('');
         $('.noteviewingdiv').html('');
         $.each(data.notes, function(notesindx, notesinfo) {                
-            var pic = domain +'/frontendassets/images/product-details/defaultimg.jpg';
+            var pic = domain +'/fimages/inventee/png/placeholder.png';
             strhtml = strhtml.concat("<div class='box-comment' style='margin-bottom:3px;'>");
             strhtml = strhtml.concat("<div class='comment-text'>");
             strhtml = strhtml.concat("<a class='clickable viewnotecomment' id='"+data.notes[notesindx]['noteid']+"'><span style='margin-left:-30px;' class='aimslabel text-muted pull-left'>View Note Comments ("+data.notes[notesindx]['commentcount']+")</span></a>");

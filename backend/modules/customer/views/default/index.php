@@ -609,12 +609,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                               <h6 class="aimslabel picbox">
                                               <?php if(isset($customerdata)){
                                                 if(empty($customerdata['picture'])){
-                                                  $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                                  $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                                 }else{
                                                   $str = $customerdata['picture'];
                                                 }
                                               }else{
-                                                $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                                $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                               }
                                               ?>
                                               <img src ="<?php echo $str;?>" width="160px" height ="150px" class="thumbnail recordpicture">

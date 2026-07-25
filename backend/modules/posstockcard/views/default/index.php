@@ -490,7 +490,7 @@ try {
                             {
                                if(empty($stockcarddata[0]['picture']))
                                {
-                                  $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';
+                                  $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';
                                }
                                else
                                {
@@ -499,7 +499,7 @@ try {
                             }
                             else
                             {
-                               $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                               $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                             }
                       ?>
                       <img src ="<?php echo $str; ?>" width="260px" height ="250px" class="thumbnail recordpicture">

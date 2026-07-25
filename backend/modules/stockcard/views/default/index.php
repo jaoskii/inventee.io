@@ -1031,12 +1031,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g1']) || is_null($stockcarddata[0]['g1'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g1'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     
@@ -1061,12 +1061,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g2']) || is_null($stockcarddata[0]['g2'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g2'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" i="2" class="attachpic clickable thumbnail gallerypic-2">
@@ -1092,12 +1092,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g3']) || is_null($stockcarddata[0]['g3'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g3'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" i="3" class="attachpic clickable thumbnail gallerypic-3">
@@ -1121,12 +1121,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g4']) || is_null($stockcarddata[0]['g4'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g4'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" i="4" class="attachpic clickable thumbnail gallerypic-4">
@@ -1152,12 +1152,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g5']) || is_null($stockcarddata[0]['g5'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g5'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" i="5" class="attachpic clickable thumbnail gallerypic-5">
@@ -1181,12 +1181,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g6']) || is_null($stockcarddata[0]['g6'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g6'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" i="6" class="attachpic clickable thumbnail gallerypic-6">
@@ -1211,12 +1211,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g7']) || is_null($stockcarddata[0]['g7'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g7'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" i="7" class="attachpic clickable thumbnail gallerypic-7">
@@ -1239,12 +1239,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                     <h6 class="aimslabel picbox">
                                     <?php if(isset($stockcarddata)){
                                         if(empty($stockcarddata[0]['g8']) || is_null($stockcarddata[0]['g8'])){
-                                            $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                            $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                         }else{
                                             $str = $stockcarddata[0]['g8'];
                                         }
                                     }else{
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }
                                     ?>
                                     <img src ="<?php echo $str; ?>" width="160px" height ="150px" i="8" class="attachpic clickable thumbnail gallerypic-8">
@@ -1378,12 +1378,12 @@ switch (Yii::$app->systemsettings->companyConfig()) {
                                 <h6 class="aimslabel picbox">
                                 <?php if(isset($stockcarddata)){
                                     if(empty($stockcarddata[0]['picture'])){
-                                        $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                        $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                     }else{
                                         $str = $stockcarddata[0]['picture'];
                                     }
                                 }else{
-                                    $str = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';    
+                                    $str = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';    
                                 }
                                 ?>
                                 <img src ="<?php echo $str; ?>" width="160px" height ="150px" class="clickable thumbnail recordpicture">

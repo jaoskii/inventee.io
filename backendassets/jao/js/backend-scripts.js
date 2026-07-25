@@ -2645,7 +2645,7 @@ function newItemdata(barcode, copyprevdata) {
 			$(".f_setfrontend").prop('checked', false);
 		}
 		if (data.moduledata['head']['picture'] == null) {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.recordpicture').prop('src', pic);
 		} else {
 			$('.recordpicture').prop('src', data.moduledata['head']['picture']);
@@ -3138,7 +3138,7 @@ function newEmployeeData(employee) {
 
 
 		if (data.moduledata['head']['picture'] == null) {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.recordpicture').prop('src', pic);
 		} else {
 			$('.recordpicture').prop('src', data.moduledata['head']['picture']);
@@ -3432,7 +3432,7 @@ function newClientData(client) {
 		}
 
 		if (data.moduledata['head']['picture'] == null) {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.recordpicture').prop('src', pic);
 		} else {
 			$('.recordpicture').prop('src', data.moduledata['head']['picture']);
@@ -4475,63 +4475,63 @@ function plottingItemData(itemdata, type) {
 	}
 
 	if (itemdata['head'][0]['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', itemdata['head'][0]['picture']);
 	}
 
 	if (itemdata['head'][0]['g1'] == null || itemdata['head'][0]['g1'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-1').prop('src', pic);
 	} else {
 		$('.gallerypic-1').prop('src', itemdata['head'][0]['g1']);
 	}
 
 	if (itemdata['head'][0]['g2'] == null || itemdata['head'][0]['g2'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-2').prop('src', pic);
 	} else {
 		$('.gallerypic-2').prop('src', itemdata['head'][0]['g2']);
 	}
 
 	if (itemdata['head'][0]['g3'] == null || itemdata['head'][0]['g3'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-3').prop('src', pic);
 	} else {
 		$('.gallerypic-3').prop('src', itemdata['head'][0]['g3']);
 	}
 
 	if (itemdata['head'][0]['g4'] == null || itemdata['head'][0]['g4'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-4').prop('src', pic);
 	} else {
 		$('.gallerypic-4').prop('src', itemdata['head'][0]['g4']);
 	}
 
 	if (itemdata['head'][0]['g5'] == null || itemdata['head'][0]['g5'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-5').prop('src', pic);
 	} else {
 		$('.gallerypic-5').prop('src', itemdata['head'][0]['g5']);
 	}
 
 	if (itemdata['head'][0]['g6'] == null || itemdata['head'][0]['g6'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-6').prop('src', pic);
 	} else {
 		$('.gallerypic-6').prop('src', itemdata['head'][0]['g6']);
 	}
 
 	if (itemdata['head'][0]['g7'] == null || itemdata['head'][0]['g7'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-7').prop('src', pic);
 	} else {
 		$('.gallerypic-7').prop('src', itemdata['head'][0]['g7']);
 	}
 
 	if (itemdata['head'][0]['g8'] == null || itemdata['head'][0]['g8'] == "") {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.gallerypic-8').prop('src', pic);
 	} else {
 		$('.gallerypic-8').prop('src', itemdata['head'][0]['g8']);
@@ -4975,7 +4975,7 @@ function plottingClientData(customerdata, type) { //UNANG HA
 	}
 
 	if (customerdata['head']['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', customerdata['head']['picture']);
@@ -5245,7 +5245,7 @@ function plottingSupplierData(customerdata, type) {
 
 
 	if (customerdata['head']['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', customerdata['head']['picture']);
@@ -5443,7 +5443,7 @@ function plottingVendorData(customerdata, type) {
 
 
 	if (customerdata['head']['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', customerdata['head']['picture']);
@@ -5705,7 +5705,7 @@ function plottingAgentData(customerdata, type) {
 
 	console.log(customerdata['head']['uv_ischecker']);
 	if (customerdata['head']['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', customerdata['head']['picture']);
@@ -5800,7 +5800,7 @@ function plottingLocationData(customerdata, type) {
 	}
 
 	if (customerdata['head']['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', customerdata['head']['picture']);
@@ -5908,7 +5908,7 @@ function plottingWarehouseData(customerdata, type) {
 	}
 
 	if (customerdata['head']['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', customerdata['head']['picture']);
@@ -6374,7 +6374,7 @@ function plottingEmployeeData(customerdata, type) {
 
 
 	if (customerdata['head']['picture'] == null) {
-		var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var pic = domain + '/fimages/inventee/png/placeholder.png';
 		$('.recordpicture').prop('src', pic);
 	} else {
 		$('.recordpicture').prop('src', customerdata['head']['picture']);
@@ -9054,7 +9054,7 @@ function loadlastClient() {
 		}
 
 		if (data.moduledata['picture'] == null) {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.recordpicture').prop('src', pic);
 		} else {
 			$('.recordpicture').prop('src', data.moduledata['picture']);
@@ -9227,7 +9227,7 @@ function loadlastEmployee() {
 		}
 
 		if (data.moduledata['picture'] == null) {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.recordpicture').prop('src', pic);
 		} else {
 			$('.recordpicture').prop('src', data.moduledata['picture']);
@@ -15341,63 +15341,63 @@ function itemHeadcancel() {
 		$('.picbox').css('display', 'block');
 
 		if (data.moduledata[0]['picture'] == null) {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.recordpicture').prop('src', pic);
 		} else {
 			$('.recordpicture').prop('src', data.moduledata[0]['picture']);
 		}
 
 		if (data.moduledata[0]['g1'] == null || data.moduledata[0]['g1'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-1').prop('src', pic);
 		} else {
 			$('.gallerypic-1').prop('src', data.moduledata[0]['g1']);
 		}
 
 		if (data.moduledata[0]['g2'] == null || data.moduledata[0]['g2'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-2').prop('src', pic);
 		} else {
 			$('.gallerypic-2').prop('src', data.moduledata[0]['g2']);
 		}
 
 		if (data.moduledata[0]['g3'] == null || data.moduledata[0]['g3'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-3').prop('src', pic);
 		} else {
 			$('.gallerypic-3').prop('src', data.moduledata[0]['g3']);
 		}
 
 		if (data.moduledata[0]['g4'] == null || data.moduledata[0]['g4'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-4').prop('src', pic);
 		} else {
 			$('.gallerypic-4').prop('src', data.moduledata[0]['g4']);
 		}
 
 		if (data.moduledata[0]['g5'] == null || data.moduledata[0]['g5'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-5').prop('src', pic);
 		} else {
 			$('.gallerypic-5').prop('src', data.moduledata[0]['g5']);
 		}
 
 		if (data.moduledata[0]['g6'] == null || data.moduledata[0]['g6'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-6').prop('src', pic);
 		} else {
 			$('.gallerypic-6').prop('src', data.moduledata[0]['g6']);
 		}
 
 		if (data.moduledata[0]['g7'] == null || data.moduledata[0]['g7'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-7').prop('src', pic);
 		} else {
 			$('.gallerypic-7').prop('src', data.moduledata[0]['g7']);
 		}
 
 		if (data.moduledata[0]['g8'] == null || data.moduledata[0]['g8'] == "") {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.gallerypic-8').prop('src', pic);
 		} else {
 			$('.gallerypic-8').prop('src', data.moduledata[0]['g8']);
@@ -17728,7 +17728,7 @@ function getUserAccessinfo(id) {
 		$('#suppname').val(data.usersdata['supplier']);
 
 		if (data.usersdata['picture'] == null) {
-			var pic = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+			var pic = domain + '/fimages/inventee/png/placeholder.png';
 			$('.recordpicture').prop('src', pic);
 		} else {
 			$('.recordpicture').prop('src', data.usersdata['picture']);
@@ -27864,11 +27864,11 @@ function getLaneDetails(key) {
 	}, function (data) {
 
 		$('.btnmanagelanesave').prop('disabled', false);
-		var b1 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b2 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b3 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b4 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b5 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var b1 = domain + '/fimages/inventee/png/placeholder.png';
+		var b2 = domain + '/fimages/inventee/png/placeholder.png';
+		var b3 = domain + '/fimages/inventee/png/placeholder.png';
+		var b4 = domain + '/fimages/inventee/png/placeholder.png';
+		var b5 = domain + '/fimages/inventee/png/placeholder.png';
 		var f1 = "";
 		var f2 = "";
 		var f3 = "";
@@ -27974,11 +27974,11 @@ function getCatDetails(key) {
 		keyid: key
 	}, function (data) {
 
-		var b1 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b2 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b3 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b4 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
-		var b5 = domain + '/frontendassets/images/product-details/defaultimg.jpg';
+		var b1 = domain + '/fimages/inventee/png/placeholder.png';
+		var b2 = domain + '/fimages/inventee/png/placeholder.png';
+		var b3 = domain + '/fimages/inventee/png/placeholder.png';
+		var b4 = domain + '/fimages/inventee/png/placeholder.png';
+		var b5 = domain + '/fimages/inventee/png/placeholder.png';
 
 		$('#txtupdatecat').val(data.detail[0]['cat_desc']);
 		if (data.detail[0]['isenabled'] == 1) {
@@ -38589,7 +38589,7 @@ function loadmenuimg(itemid) {
 			if (waw.img != '') {
 				$('#choicemenuimg').prop('src', waw.img);
 			} else {
-				$('#choicemenuimg').prop('src', domain + '/frontendassets/images/product-details/defaultimg.jpg');
+				$('#choicemenuimg').prop('src', domain + '/fimages/inventee/png/placeholder.png');
 			}
 		}
 	});
@@ -38615,7 +38615,7 @@ function deletemenuimg(itemid) {
 
 			if (waw.status === true) {
 				generateAlert('success', waw.msg, 'SUCCESS');
-				$('#choicemenuimg').prop('src', domain + '/frontendassets/images/product-details/defaultimg.jpg');
+				$('#choicemenuimg').prop('src', domain + '/fimages/inventee/png/placeholder.png');
 			} else {
 				generateAlert('error', waw.msg, 'WARNING');
 			}

@@ -2183,7 +2183,7 @@ class syssettings extends Component{
 
     public function defaultSystemImage(){
     //GETS DEFAULT SYSTEM IMAGE / LOGO
-        return Yii::$app->homeUrl . 'frontendassets/images/product-details/defaultimg.jpg';
+        return Yii::$app->homeUrl . 'fimages/inventee/png/placeholder.png';
     }//end function
 
     public function defaultEditableEntries(){

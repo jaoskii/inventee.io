@@ -433,7 +433,7 @@ class DefaultController extends Controller{
         $status =  Yii::$app->sbccommon->execqry($qry);
 
         if($status){
-            $pic = Yii::$app->homeUrl.'frontendassets/images/product-details/defaultimg.jpg';
+            $pic = Yii::$app->homeUrl.'fimages/inventee/png/placeholder.png';
         }else{
             $pic = '';
         }//end if
