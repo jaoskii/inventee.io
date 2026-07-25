@@ -27,6 +27,15 @@ if ! grep -q "AllowOverride All" /etc/apache2/sites-enabled/000-default.conf; th
         /etc/apache2/sites-enabled/000-default.conf
 fi
 
+# Force exactly one MPM at container start, not just at image build.
+# Railway's deploy does not reliably apply file deletions between builds
+# (mpm_event's symlinks from an old build were observed surviving
+# alongside a freshly-built mpm_prefork), so enforce it here too where
+# it runs against the container's actual live filesystem every start.
+find /etc/apache2/mods-enabled -name 'mpm_*.conf' -o -name 'mpm_*.load' | xargs rm -f
+ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
+ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load
+
 echo "[entrypoint] mods-enabled MPM state:"
 ls -la /etc/apache2/mods-enabled/ | grep -i mpm || echo "[entrypoint] (no mpm_* files found in mods-enabled)"
 echo "[entrypoint] apache2ctl configtest at runtime:"
