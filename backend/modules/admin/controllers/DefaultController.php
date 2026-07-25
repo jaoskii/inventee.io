@@ -651,9 +651,9 @@ class DefaultController extends Controller
         $return['slsper_lls'] = Yii::$app->backend->GetFrontIndexData('SLSPER_LLS');
 
         $q=Yii::$app->systemsettings->quota();
-        $return['slsper']=number_format((str_replace(',', '', $return['slsper'])/$q)*100,2);
-        $return['slsper_ls']=number_format((str_replace(',', '', $return['slsper_ls'])/$q)*100,2);
-        $return['slsper_lls']=number_format((str_replace(',', '', $return['slsper_lls'])/$q)*100,2);
+        $return['slsper']=number_format(((float)str_replace(',', '', (string)$return['slsper'])/$q)*100,2);
+        $return['slsper_ls']=number_format(((float)str_replace(',', '', (string)$return['slsper_ls'])/$q)*100,2);
+        $return['slsper_lls']=number_format(((float)str_replace(',', '', (string)$return['slsper_lls'])/$q)*100,2);
 
 
         $return['sales'] = Yii::$app->backend->GetFrontIndexData('SALES');
@@ -672,7 +672,7 @@ class DefaultController extends Controller
         $return['unp'] = Yii::$app->backend->GetFrontIndexData('UNP');
         $return['center'] = Yii::$app->backend->GetFrontIndexData('CNTR');
 
-        $arr = '';
+        $arr = [];
 
         foreach ($return['center'] as $key => $value) {
             $arr[$value['bcode']]['name'] = $value['name'];

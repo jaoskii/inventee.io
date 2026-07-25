@@ -1624,12 +1624,12 @@ class backendfunctions extends Component{
       $qry="select code, name, sum(amount) as amount from (
             select head.docno, ifnull(stock.ext,0) as amount, '' as alias, cntr.code, cntr.name
             from lahead as head left join lastock as stock on head.trno=stock.trno left join cntnum as c on c.trno=head.trno
-            left join center as cntr on cntr.code=c.center where head.doc='SJ' and year(head.dateid)=year(now())
+            left join center as cntr on cntr.code=c.center where head.doc='SJ' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             union
             select head.docno, ifnull(detail.cr-detail.db,0) as sales, coa.alias, cntr.code, cntr.name
-            from glhead as head left join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
+            from glhead as head straight_join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
             left join cntnum as c on c.trno=head.trno left join center as cntr on cntr.code=c.center
-            where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())) as j
+            where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)) as j
             group by code, name";
             return Yii::$app->sbccommon->opentable($qry);
     }
@@ -1724,12 +1724,12 @@ class backendfunctions extends Component{
         sum(case when mo=7 then sales else 0 end) as mojul, sum(case when mo=8 then sales else 0 end) as moaug, sum(case when mo=9 then sales else 0 end) as mosep,
         sum(case when mo=10 then sales else 0 end) as mooct, sum(case when mo=11 then sales else 0 end) as monov, sum(case when mo=12 then sales else 0 end) as modec
         from (select 'p' as tr, head.docno, year(head.dateid) as yr, month(head.dateid) as mo, ifnull(client.clientname,'') as clientname, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-        from glhead as head left join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
-        where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())
+        from glhead as head straight_join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
+        where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
         union all
         select 'p' as tr, head.docno, year(head.dateid) as yr, month(head.dateid) as mo, ifnull(client.clientname,'') as clientname, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-        from hglhead as head left join hgldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
-        where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())
+        from hglhead as head straight_join hgldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
+        where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
         ) as a group by yr order by yr";
         $data = Yii::$app->sbccommon->opentable($qry);
         return $data;
@@ -1741,12 +1741,12 @@ class backendfunctions extends Component{
         sum(case when mo=7 then sales else 0 end) as mojul, sum(case when mo=8 then sales else 0 end) as moaug, sum(case when mo=9 then sales else 0 end) as mosep,
         sum(case when mo=10 then sales else 0 end) as mooct, sum(case when mo=11 then sales else 0 end) as monov, sum(case when mo=12 then sales else 0 end) as modec
         from (select 'p' as tr, head.docno, year(head.dateid) as yr, month(head.dateid) as mo, ifnull(client.clientname,'') as clientname, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-        from glhead as head left join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
-        where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())-1
+        from glhead as head straight_join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
+        where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now())-1,1) and head.dateid < makedate(year(now()),1)
         union all
         select 'p' as tr, head.docno, year(head.dateid) as yr, month(head.dateid) as mo, ifnull(client.clientname,'') as clientname, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-        from hglhead as head left join hgldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
-        where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())-1
+        from hglhead as head straight_join hgldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
+        where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now())-1,1) and head.dateid < makedate(year(now()),1)
         ) as a group by yr order by yr";
         $data = Yii::$app->sbccommon->opentable($qry);
         return $data;
@@ -1758,12 +1758,12 @@ class backendfunctions extends Component{
         sum(case when mo=7 then sales else 0 end) as mojul, sum(case when mo=8 then sales else 0 end) as moaug, sum(case when mo=9 then sales else 0 end) as mosep,
         sum(case when mo=10 then sales else 0 end) as mooct, sum(case when mo=11 then sales else 0 end) as monov, sum(case when mo=12 then sales else 0 end) as modec
         from (select 'p' as tr, head.docno, year(head.dateid) as yr, month(head.dateid) as mo, ifnull(client.clientname,'') as clientname, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-        from glhead as head left join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
-        where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())-2
+        from glhead as head straight_join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
+        where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now())-2,1) and head.dateid < makedate(year(now())-1,1)
         union all
         select 'p' as tr, head.docno, year(head.dateid) as yr, month(head.dateid) as mo, ifnull(client.clientname,'') as clientname, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-        from hglhead as head left join hgldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
-        where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())-2
+        from hglhead as head straight_join hgldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid left join client on client.clientid=head.clientid left join cntnum on cntnum.trno=head.trno
+        where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now())-2,1) and head.dateid < makedate(year(now())-1,1)
         ) as a group by yr order by yr";
 
         $data = Yii::$app->sbccommon->opentable($qry);
@@ -1775,11 +1775,11 @@ class backendfunctions extends Component{
       $qry="select format(sum(sales),2) as sales from (
             select head.docno,ifnull(stock.ext,0) as sales, '' as alias
             from lahead as head left join lastock as stock on head.trno=stock.trno
-            where head.doc='SJ' and year(head.dateid)=year(now())
+            where head.doc='SJ' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             union
             select head.docno, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-            from glhead as head left join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
-            where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())
+            from glhead as head straight_join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
+            where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             ) as j";
       return Yii::$app->sbccommon->datareader($qry);
     }
@@ -1788,11 +1788,11 @@ class backendfunctions extends Component{
       $qry="select format(sum(sales),2) as sales from (
             select head.docno,ifnull(stock.ext,0) as sales, '' as alias
             from lahead as head left join lastock as stock on head.trno=stock.trno
-            where head.doc='SJ' and year(head.dateid)=year(now())
+            where head.doc='SJ' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             union
             select head.docno, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-            from glhead as head left join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
-            where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())-1
+            from glhead as head straight_join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
+            where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now())-1,1) and head.dateid < makedate(year(now()),1)
             ) as j";
       return Yii::$app->sbccommon->datareader($qry);
     }
@@ -1801,37 +1801,37 @@ class backendfunctions extends Component{
       $qry="select format(sum(sales),2) as sales from (
             select head.docno,ifnull(stock.ext,0) as sales, '' as alias
             from lahead as head left join lastock as stock on head.trno=stock.trno
-            where head.doc='SJ' and year(head.dateid)=year(now())
+            where head.doc='SJ' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             union
             select head.docno, ifnull(detail.cr-detail.db,0) as sales, coa.alias
-            from glhead as head left join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
-            where head.doc='sj' and left(coa.alias,2)='sa' and year(head.dateid)=year(now())-2
+            from glhead as head straight_join gldetail as detail on detail.trno=head.trno left join coa on coa.acnoid=detail.acnoid
+            where head.doc='sj' and left(coa.alias,2)='sa' and head.dateid >= makedate(year(now())-2,1) and head.dateid < makedate(year(now())-1,1)
             ) as j";
       return Yii::$app->sbccommon->datareader($qry);
     }
 
     private function listexpns(){
       $qry = "select format(sum(db),2) as db, format(sum(cr),2) as cr, format(sum(db-cr),2) as expenses from (
-            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from ladetail as detail
-            left join lahead as head on head.trno=detail.trno
-            left join coa on detail.acno=coa.acno where coa.cat='E' and head.doc in ('PV','CV') and year(head.dateid)=year(now())
+            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from lahead as head
+            straight_join ladetail as detail on head.trno=detail.trno
+            left join coa on detail.acno=coa.acno where coa.cat='E' and head.doc in ('PV','CV') and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             union all
-            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from gldetail as detail
-            left join glhead as head on head.trno=detail.trno
-            left join coa on detail.acnoid=coa.acnoid where coa.cat='E' and head.doc in ('PV','CV') and year(head.dateid)=year(now())
+            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from glhead as head
+            straight_join gldetail as detail on head.trno=detail.trno
+            left join coa on detail.acnoid=coa.acnoid where coa.cat='E' and head.doc in ('PV','CV') and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             ) as j";
       return Yii::$app->sbccommon->opentable($qry);
     }
 
     private function listcollections(){
       $qry = "select format(sum(db),2) as db, format(sum(cr),2) as cr, format(sum(db-cr),2) as collections from (
-            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from ladetail as detail
-            left join lahead as head on head.trno=detail.trno
-            left join coa on detail.acno=coa.acno where left(coa.alias,2) in ('CA','CR') and head.doc='CR' and year(head.dateid)=year(now())
+            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from lahead as head
+            straight_join ladetail as detail on head.trno=detail.trno
+            left join coa on detail.acno=coa.acno where left(coa.alias,2) in ('CA','CR') and head.doc='CR' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             union all
-            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from gldetail as detail
-            left join glhead as head on head.trno=detail.trno
-            left join coa on detail.acnoid=coa.acnoid where left(coa.alias,2) in ('CA','CR') and head.doc='CR' and year(head.dateid)=year(now())
+            select head.docno, head.dateid, coa.cat, coa.acno, coa.acnoname, detail.db, detail.cr from glhead as head
+            straight_join gldetail as detail on head.trno=detail.trno
+            left join coa on detail.acnoid=coa.acnoid where left(coa.alias,2) in ('CA','CR') and head.doc='CR' and head.dateid >= makedate(year(now()),1) and head.dateid < makedate(year(now())+1,1)
             ) as j";
       return Yii::$app->sbccommon->opentable($qry);
     }

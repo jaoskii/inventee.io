@@ -36,3 +36,6 @@ Thumbs.db
 
 # --- Personal notes (never publish) ---
 /jaoski-notes/
+
+# --- graphify generated output ---
+graphify-out/
