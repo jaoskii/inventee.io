@@ -2295,7 +2295,7 @@ class syssettings extends Component{
             Yii::$app->session['sysconfig'] = [
                 'topheader' => 'Universe Pharmacy',
                 'topheader_mini' => 'SSSC',
-                'login_info' => 'Right System Version ' . Yii::$app->systemsettings->systemVersion(),
+                'login_info' => Yii::$app->systemsettings->systemVersion(),
                 'report_companyname' => 'Universe Pharmacy',
                 'report_contact' => 'Tel no. (032) 253-0146, 253-4819 , 412-3250, 412-3414',
                 'report_address' => '366 Magallanes St., Cebu City'];
