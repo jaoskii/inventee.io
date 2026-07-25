@@ -716,6 +716,10 @@ class DefaultController extends Controller{
             break;
         }//END SWITCH CASE
 
+        if(Yii::$app->pdfreporter->wantsPdf()){
+            return Yii::$app->pdfreporter->renderPdf($this, $sj, $arrparams, 'SJ-'.$_POST['trno'].'.pdf');
+        }//end if
+
         return $this->render($sj,$arrparams);
     }//END SJ INDEX
 

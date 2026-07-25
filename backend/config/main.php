@@ -580,6 +580,10 @@ return [
             'class' => 'app\components\sbcpdf',
         ],
 
+        'pdfreporter' => [
+            'class' => 'app\components\PdfReporter',
+        ],
+
         'webuser' => [
             'class' => 'app\components\Webuser',
         ],
