@@ -27,5 +27,10 @@ if ! grep -q "AllowOverride All" /etc/apache2/sites-enabled/000-default.conf; th
         /etc/apache2/sites-enabled/000-default.conf
 fi
 
+echo "[entrypoint] mods-enabled MPM state:"
+ls -la /etc/apache2/mods-enabled/ | grep -i mpm || echo "[entrypoint] (no mpm_* files found in mods-enabled)"
+echo "[entrypoint] apache2ctl configtest at runtime:"
+apache2ctl configtest 2>&1 || true
+
 echo "[entrypoint] Starting Apache on port $PORT"
 exec apache2-foreground
