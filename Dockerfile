@@ -7,9 +7,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd intl zip soap pdo_mysql mysqli \
     && a2enmod rewrite \
-    && a2dismod mpm_event mpm_worker 2>/dev/null || true \
-    && a2enmod mpm_prefork \
     && rm -rf /var/lib/apt/lists/*
+
+# Force exactly one MPM (prefork — required by mod_php).
+# Direct symlink manipulation is more reliable than a2dismod/a2enmod scripts,
+# which exit non-zero when a module is already disabled (silent failure in && chains).
+RUN find /etc/apache2/mods-enabled -name 'mpm_*.conf' -o -name 'mpm_*.load' | xargs rm -f \
+    && ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf \
+    && ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load \
+    && apachectl configtest
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
