@@ -290,6 +290,26 @@ color:blue;
   background-color: #11B03E !important;
 }
 
+.bg-starbucks{
+  background: #00704A !important;
+  background: linear-gradient(135deg, #1E3932 0%, #00704A 60%, #CBA258 120%) !important;
+}
+
+.bg-xtwitter{
+  background: #000000 !important;
+  background: linear-gradient(135deg, #000000 0%, #14171A 55%, #1D9BF0 130%) !important;
+}
+
+.bg-instagram{
+  background: #833AB4 !important;
+  background: linear-gradient(135deg, #833AB4 0%, #E1306C 50%, #F77737 100%) !important;
+}
+
+.bg-coder{
+  background: #0D1117 !important;
+  background: linear-gradient(135deg, #0D1117 0%, #161B22 55%, #58A6FF 140%) !important;
+}
+
 .theme_text {
     color: #fff;
     text-align: center;

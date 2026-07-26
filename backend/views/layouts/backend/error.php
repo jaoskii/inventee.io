@@ -21,6 +21,9 @@ $baseUrl = $asset->baseUrl;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="icon" type="image/x-icon" href="<?php echo Yii::$app->homeUrl;?>fimages/inventee/favicon/favicon.ico?v=20260726">
+    <link rel="shortcut icon" href="<?php echo Yii::$app->homeUrl;?>fimages/inventee/favicon/favicon.ico?v=20260726">
+    <link rel="icon" type="image/png" href="<?php echo Yii::$app->homeUrl;?>fimages/inventee/favicon/favicon.png?v=20260726">
     <?php $this->head() ?>
 </head>
 <!-- LIST OF THEMES

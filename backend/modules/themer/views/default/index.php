@@ -63,6 +63,30 @@ switch (Yii::$app->systemsettings->companyConfig()) {
 	            			$title = "Shades of Grey";
 	            			$themeimg = Yii::$app->homeUrl.'backendassets/img/theme/gray.jpg';
 	            			break;
+
+	            		case 'STARBUCKS':
+	            			$color = "bg-starbucks";
+	            			$title = "Starbucks";
+	            			$themeimg = Yii::$app->homeUrl.'backendassets/img/theme/starbucks.svg';
+	            			break;
+
+	            		case 'XTWITTER':
+	            			$color = "bg-xtwitter";
+	            			$title = "X / Twitter";
+	            			$themeimg = Yii::$app->homeUrl.'backendassets/img/theme/xtwitter.svg';
+	            			break;
+
+	            		case 'INSTAGRAM':
+	            			$color = "bg-instagram";
+	            			$title = "Instagram";
+	            			$themeimg = Yii::$app->homeUrl.'backendassets/img/theme/instagram.svg';
+	            			break;
+
+	            		case 'CODER':
+	            			$color = "bg-coder";
+	            			$title = "Coder Dark";
+	            			$themeimg = Yii::$app->homeUrl.'backendassets/img/theme/coder.svg';
+	            			break;
 	            		
 	            		default:
 	            			$color = "bg-defaulter";

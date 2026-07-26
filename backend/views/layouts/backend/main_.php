@@ -7,6 +7,10 @@ use backend\assets\MacAsset;
 use backend\assets\RedLightAsset;
 use backend\assets\BluePandaAsset;
 use backend\assets\GreyAsset;
+use backend\assets\StarbucksAsset;
+use backend\assets\XTwitterAsset;
+use backend\assets\InstagramAsset;
+use backend\assets\CoderAsset;
 use yii\helpers\Html;
 
 $asset = BackendAsset::register($this);
@@ -26,6 +30,22 @@ switch (Yii::$app->session['loggeduser']['theme']) {
 
     case 'RTT':
     $asset2 = GreyAsset::register($this);
+        break;
+
+    case 'STARBUCKS':
+    $asset2 = StarbucksAsset::register($this);
+        break;
+
+    case 'XTWITTER':
+    $asset2 = XTwitterAsset::register($this);
+        break;
+
+    case 'INSTAGRAM':
+    $asset2 = InstagramAsset::register($this);
+        break;
+
+    case 'CODER':
+    $asset2 = CoderAsset::register($this);
         break;
 
     default:
@@ -85,6 +105,22 @@ switch (Yii::$app->session['loggeduser']['theme']) {
 
     case 'GENLIGHT':
     echo '<body class="hold-transition skin-red sidebar-mini '.$class.'">';
+        break;
+
+    case 'STARBUCKS':
+    echo '<body class="hold-transition skin-green sidebar-mini '.$class.'">';
+        break;
+
+    case 'XTWITTER':
+    echo '<body class="hold-transition skin-black sidebar-mini '.$class.'">';
+        break;
+
+    case 'INSTAGRAM':
+    echo '<body class="hold-transition skin-purple sidebar-mini '.$class.'">';
+        break;
+
+    case 'CODER':
+    echo '<body class="hold-transition skin-black sidebar-mini '.$class.'">';
         break;
                         
     default:

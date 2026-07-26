@@ -1,0 +1,156 @@
+/* Starbucks — forest green + cream gradients (color chrome only) */
+
+.box.box-solid.box-success .box-header,
+.bg-green,
+.callout.callout-success,
+.alert-success,
+.label-success,
+.modal-success .modal-body {
+  background: #00704A;
+  background: linear-gradient(135deg, #1E3932 0%, #00704A 55%, #1B6B45 100%);
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+
+.box.box-solid.box-success > .box-header {
+  color: #fff;
+}
+
+.masterfile_ico,
+.purchases_ico,
+.sales_ico,
+.inventory_ico,
+.payables_ico,
+.receivables_ico,
+.accounting_ico,
+.reportlist_ico,
+.utilities_ico,
+.productions_ico {
+  font-size: 11px;
+  padding: 5px;
+}
+
+.new_btn,
+.add_btn,
+.quickadd_btn,
+.edit_btn,
+.save_btn,
+.cancel_btn,
+.print_btn,
+.lock_btn,
+.unlock_btn,
+.post_btn,
+.unpost_btn,
+.posted_btn,
+.logs_btn,
+.delete_btn,
+.order_btn,
+.unpaid_btn,
+.adjust_btn,
+.coa_btn,
+.checks_btn {
+  font-size: 14px;
+  color: #f3f3f3;
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+}
+
+.jaox_ico {
+  padding: 4px;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin-top: -2px;
+}
+
+.hid {
+  display: none;
+}
+
+.page_nav_icons {
+  color: #f6f6f6;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.txttrno {
+  color: #fff;
+}
+
+/* Module toolbar: kill light Bootstrap borders on transparent header buttons */
+.box.box-solid.box-success {
+  border-color: #1E3932;
+}
+
+.box.box-solid.box-success > .box-header .btn-group,
+.modulehead .btn-group {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.box.box-solid.box-success > .box-header .btn,
+.box.box-solid.box-success > .box-header .btn.btn-default,
+.box.box-solid.box-success > .box-header .btn.btn-success,
+.modulehead .btn {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.box.box-solid.box-success > .box-header .btn:hover,
+.box.box-solid.box-success > .box-header .btn:focus,
+.box.box-solid.box-success > .box-header .btn:active,
+.modulehead .btn:hover {
+  background: rgba(0, 0, 0, 0.15) !important;
+  border-color: transparent !important;
+}
+
+.box.box-solid.box-success > .box-header .btn-box-tool,
+.box.box-solid.box-success > .box-header .jaox {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.skin-green .main-header {
+  background: linear-gradient(90deg, #1E3932 0%, #00704A 60%, #CBA258 160%);
+}
+
+.skin-green .main-header .logo {
+  background: #1E3932;
+  background: linear-gradient(180deg, #243B34 0%, #1E3932 100%);
+}
+
+.skin-green .main-header .logo:hover {
+  background: #162A25;
+}
+
+.skin-green .main-header .navbar .nav > li > a {
+  color: #F2F0EB;
+}
+
+.skin-green .main-header .navbar .sidebar-toggle {
+  color: #F2F0EB;
+}
+
+.skin-green .sidebar-menu > li.active > a,
+.skin-green .sidebar-menu > li:hover > a {
+  border-left-color: #CBA258;
+}
+
+.btn-success {
+  background-color: #00704A;
+  border-color: #1E3932;
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.hover {
+  background-color: #1E3932;
+  border-color: #162A25;
+}
+
+.control-sidebar-dark + .control-sidebar-bg {
+  background-color: #1E3932;
+}

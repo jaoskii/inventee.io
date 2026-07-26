@@ -26,6 +26,22 @@ class DefaultController extends Controller{
         Yii::$app->view->params['moduleid'] = $moduleid;
         $this->layout = "@app/views/layouts/backend/main";
         $return = Yii::$app->backend->retrieveThemes();
+        if (!is_array($return)) {
+            $return = [];
+        }
+        $existing = [];
+        foreach ($return as $row) {
+            if (!empty($row['themecode'])) {
+                $existing[$row['themecode']] = true;
+            }
+        }
+        // Color/gradient themes (no MAC-style icon packs)
+        $builtin = ['STARBUCKS', 'XTWITTER', 'INSTAGRAM', 'CODER'];
+        foreach ($builtin as $code) {
+            if (!isset($existing[$code])) {
+                $return[] = ['themecode' => $code];
+            }
+        }
         return $this->render('index',array('moduleid'=>$moduleid,'themes'=>$return));
     }
 

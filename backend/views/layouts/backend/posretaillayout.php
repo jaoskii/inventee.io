@@ -5,6 +5,10 @@ use backend\assets\MacAsset;
 use backend\assets\RedLightAsset;
 use backend\assets\BluePandaAsset;
 use backend\assets\GreyAsset;
+use backend\assets\StarbucksAsset;
+use backend\assets\XTwitterAsset;
+use backend\assets\InstagramAsset;
+use backend\assets\CoderAsset;
 use yii\helpers\Html;
 
 $asset = BackendAsset::register($this);
@@ -14,6 +18,10 @@ switch (Yii::$app->session['loggeduser']['theme']) {
     case 'PANDATOOLS': $asset2 = BluePandaAsset::register($this); break;
     case 'GENLIGHT': $asset2 = RedLightAsset::register($this); break;
     case 'RTT': $asset2 = GreyAsset::register($this); break;
+    case 'STARBUCKS': $asset2 = StarbucksAsset::register($this); break;
+    case 'XTWITTER': $asset2 = XTwitterAsset::register($this); break;
+    case 'INSTAGRAM': $asset2 = InstagramAsset::register($this); break;
+    case 'CODER': $asset2 = CoderAsset::register($this); break;
     default: $asset2 = DefaultThemeAsset::register($this); break;
 }
 $baseUrl = $asset->baseUrl;
@@ -26,6 +34,9 @@ $baseUrl = $asset->baseUrl;
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
+        <link rel="icon" type="image/x-icon" href="<?php echo Yii::$app->homeUrl;?>fimages/inventee/favicon/favicon.ico?v=20260726">
+        <link rel="shortcut icon" href="<?php echo Yii::$app->homeUrl;?>fimages/inventee/favicon/favicon.ico?v=20260726">
+        <link rel="icon" type="image/png" href="<?php echo Yii::$app->homeUrl;?>fimages/inventee/favicon/favicon.png?v=20260726">
         <?php $this->head() ?>
     </head>
 <?php
@@ -35,6 +46,10 @@ switch (Yii::$app->session['loggeduser']['theme']) {
     case 'RTT':  echo '<body class="hold-transition skin-black-light sidebar-mini '.$class.'">'; break;
     case 'PANDATOOLS': echo '<body class="hold-transition skin-blue sidebar-mini '.$class.'">'; break;
     case 'GENLIGHT': echo '<body class="hold-transition skin-red sidebar-mini '.$class.'">'; break;
+    case 'STARBUCKS': echo '<body class="hold-transition skin-green sidebar-mini '.$class.'">'; break;
+    case 'XTWITTER': echo '<body class="hold-transition skin-black sidebar-mini '.$class.'">'; break;
+    case 'INSTAGRAM': echo '<body class="hold-transition skin-purple sidebar-mini '.$class.'">'; break;
+    case 'CODER': echo '<body class="hold-transition skin-black sidebar-mini '.$class.'">'; break;
     default: echo '<body class="hold-transition skin-green sidebar-mini '.$class.'">'; break;
 }
 ?>
