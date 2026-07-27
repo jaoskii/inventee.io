@@ -1,0 +1,8 @@
+# Upload tree: serve images only — never execute scripts.
+# Safe for live inventee; does not affect ERP AJAX/CSRF behavior.
+Options -Indexes -ExecCGI
+php_flag engine off
+
+<FilesMatch "(?i)\.(php|phtml|phar|php[0-9]+)$">
+    Require all denied
+</FilesMatch>

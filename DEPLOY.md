@@ -14,11 +14,15 @@ Loaded by `common/config/main-local.php` via symfony/dotenv. Minimum required:
 
 | Key | Notes |
 |-----|-------|
+| `YII_DEBUG` | **Deployed: `false`.** Read by `index.php` via `getenv()` (not dotenv). Docker entrypoint defaults to `false` if unset. |
+| `YII_ENV` | **Deployed: `prod`.** Same as above; Docker entrypoint defaults to `prod` if unset. |
 | `DB_HOST` / `DB_PORT` | Defaults to `127.0.0.1:3306` if unset |
 | `DB_USER` / `DB_PASS` | MySQL credentials |
 | `DB_SCHEMA` | Database name (e.g. `web_universe`) |
 | `DB_CHARSET` | `utf8` |
 | `SYSTEM_TYPE`, `RELEASE`, `VERSION` | App identity/branding |
+
+On Railway/Docker, set `YII_DEBUG=false` and `YII_ENV=prod` as service variables (or rely on the entrypoint defaults). Outside Docker Apache, use `SetEnv YII_DEBUG false` / `SetEnv YII_ENV prod` in the vhost — writing them only into `.env` does **not** affect `index.php` today.
 
 ## 2. Composer dependencies
 
@@ -51,7 +55,13 @@ chmod -R 775 backend/runtime console/runtime assets
 - `.htaccess` at root handles rewrites (Apache). For nginx/Herd, pretty URLs handled by server config.
 - PHP 8.x (see `UPGRADE-PHP8.md`), MySQL — legacy 5.x SQL mode relaxed per-session in `common/config/main-local.php` (`NO_ENGINE_SUBSTITUTION`).
 
-## 6. Database
+## 6. Upload directory hardening (`fimages/`)
+
+`fimages/.htaccess` disables PHP/`ExecCGI` under the upload tree and denies `*.php` / `*.phtml` / `*.phar`. Existing images keep serving. ERP AJAX and CSRF behavior are unchanged.
+
+After deploy, confirm a normal image URL still loads (e.g. a logo under `/fimages/...`) and that a probe like `/fimages/test.php` is denied (404/403), not executed.
+
+## 7. Database
 
 - Import schema/dump into the `DB_SCHEMA` database.
 - Stored procedures / triggers documented in `jaoski-notes/` txt files (local only, not in git) — apply the ones relevant to the release.
@@ -59,7 +69,9 @@ chmod -R 775 backend/runtime console/runtime assets
 ## Checklist
 
 - [ ] `.env` created and filled
+- [ ] Deployed host has `YII_DEBUG=false` and `YII_ENV=prod` (Railway vars or Docker entrypoint defaults)
 - [ ] `composer install --no-dev`
 - [ ] `runtime/` + `assets/` dirs exist and writable
 - [ ] Database imported, credentials match `.env`
 - [ ] Web server rewrites working (`/admin/login` loads)
+- [ ] `/fimages/` images still load; PHP under `/fimages/` is not executable

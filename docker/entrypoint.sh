@@ -4,7 +4,12 @@
 
 PORT="${PORT:-80}"
 
-echo "[entrypoint] PORT=$PORT"
+# Production-safe defaults for Docker/Railway. Local non-Docker is unchanged
+# (index.php still defaults to debug/dev when these env vars are unset).
+export YII_DEBUG="${YII_DEBUG:-false}"
+export YII_ENV="${YII_ENV:-prod}"
+
+echo "[entrypoint] PORT=$PORT YII_DEBUG=$YII_DEBUG YII_ENV=$YII_ENV"
 
 # Patch Apache to listen on Railway's assigned PORT
 sed -i "s/Listen 80/Listen ${PORT}/" /etc/apache2/ports.conf
@@ -13,7 +18,7 @@ sed -i "s/<VirtualHost \*:80>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-enabl
 # Generate .env from Railway-injected env vars (only if not already present)
 if [ ! -f /var/www/html/.env ]; then
     echo "[entrypoint] Writing .env from environment"
-    printenv | grep -E '^(SYSTEM_TYPE|RESET_MENU_AT_LOGIN|ENABLE_POS_MODULES|DECIMAL_[A-Z_]+|QUERY_LIMITER|ENABLE_BRANCHADD|DB_HOST|DB_PORT|DB_USER|DB_PASS|DB_SCHEMA|DB_CHARSET|VERSION|RELEASE|LAST_MODIF_ATTR)=' \
+    printenv | grep -E '^(YII_DEBUG|YII_ENV|SYSTEM_TYPE|RESET_MENU_AT_LOGIN|ENABLE_POS_MODULES|DECIMAL_[A-Z_]+|QUERY_LIMITER|ENABLE_BRANCHADD|DB_HOST|DB_PORT|DB_USER|DB_PASS|DB_SCHEMA|DB_CHARSET|VERSION|RELEASE|LAST_MODIF_ATTR)=' \
         > /var/www/html/.env || true   # grep exits 1 on no match — that's OK
     echo "[entrypoint] .env contents:"
     cat /var/www/html/.env
