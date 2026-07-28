@@ -54,6 +54,7 @@ chmod -R 775 backend/runtime console/runtime assets
 - Document root: project root (`index.php` is the frontend entry; `backend/` is admin)
 - `.htaccess` at root handles rewrites (Apache). For nginx/Herd, pretty URLs handled by server config.
 - PHP 8.x (see `UPGRADE-PHP8.md`), MySQL — legacy 5.x SQL mode relaxed per-session in `common/config/main-local.php` (`NO_ENGINE_SUBSTITUTION`).
+- **HTTPS behind Railway:** `index.php` sets `HTTPS=on` from `X-Forwarded-Proto`, and `backend/config/main-local.php` trusts private proxy CIDRs. After deploy, `https://www.inventee.io/SO/index` must redirect to `https://…/admin/login` (not `http://`).
 
 ## 6. Upload directory hardening (`fimages/`)
 
